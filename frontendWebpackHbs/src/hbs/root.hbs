@@ -1,10 +1,12 @@
 <header>{{siteInfo.title}}</header>
-<nav>
-	<ul>
-
+<nav id="nav-bar">
+	<ul id="root-nav">
+		{{#each pages}}
+		<li class="navigation-li" data-link="{{name}}">{{name}}</li>
+		{{/each}}
 	</ul>
 </nav>
-<div id="toolbar">
 
-</div>
-<main id="main"></main>
+<main id="root-main">
+	<p>this is root</p>
+</main>
