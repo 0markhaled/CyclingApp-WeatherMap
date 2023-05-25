@@ -9,42 +9,33 @@ module.exports = {
 		return result.length > 0;
 	},
 	'addUser': async function (username, email, password) {
-		if (!await this.isUser(username)) {
-			let conn = await db.getConnection();
+		if (username != null && email != null && password != null) {
+			if (!await this.isUser(username)) {
+				let conn = await db.getConnection();
 
-			// hash the password 
-			// (sha256 "hasher")
-			// update generates a hash "object"
-			// digest outputs it to a value
-			const passHash = (crypto.createHash('sha256')).update(password).digest('base64');
-
-			const validateCode = (crypto.createHash('sha256')).update('' + Math.random() * 99999999999999).digest('base64');
+				// hash the password 
+				// (sha256 "hasher")
+				// update generates a hash "object"
+				// digest outputs it to a value
+				const passHash = (crypto.createHash('sha256')).update(password).digest('base64');
 
 
-			const result = await conn.query("insert into user (username, email, passHash, validate_code) values (?,?,?,?)", [username, email, passHash, validateCode]);
-			conn.end();
-			result.code = validateCode;
 
-			result.user = { username: username, email: email, user_id: result.insertId };
 
-			return result;
-		} else {
-			return false;
+				const result = await conn.query("insert into user (username, email, passHash) values (?,?,?)", [username, email, passHash]);
+				conn.end();
+
+
+				result.user = { username: username, email: email, user_id: Number(result.insertId) };
+
+				return result;
+			} else {
+				return false;
+			}
 		}
+		return false;
 	},
-	'validateUser': async function (user_id, code) {
-		let conn = await db.getConnection();
-		console.log(user_id, code);
-		const result = await conn.query("select user_id from user where user_id = ? and validate_code = ?", [user_id, code]);
-		conn.end();
-		if (result.length > 0) {
-			conn = await db.getConnection();
-			const result = await conn.query("update user set validate_code = null where user_id = ?", [user_id]);
-			return true;
-		} else {
-			return false;
-		}
-	},
+
 	'logout': async function (user_id) {
 		let conn = await db.getConnection();
 		const result = await conn.query("update user set cookieHash = null where user_id = ?", [user_id]);
@@ -57,7 +48,7 @@ module.exports = {
 		const cookieHash = (crypto.createHash('sha256')).update(cookie).digest('base64');
 
 		// check if the user_id and cookieHash EXIST in the database
-		const result = await conn.query("select user_id,username,email from `user` where user_id = ? and cookieHash = ? and validate_code is null",
+		const result = await conn.query("select user_id,username,email from `user` where user_id = ? and cookieHash = ? ",
 			[user_id, cookieHash]);
 
 		conn.end();
@@ -75,7 +66,7 @@ module.exports = {
 
 		const passHash = (crypto.createHash('sha256')).update(password).digest('base64');
 
-		const result = await conn.query("select user_id,username,email from `user` where username = ? and passHash = ? and validate_code is null",
+		const result = await conn.query("select user_id,username,email from `user` where username = ? and passHash = ? ",
 			[username, passHash]);
 
 		conn.end();

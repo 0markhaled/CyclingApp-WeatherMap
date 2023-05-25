@@ -4,13 +4,17 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const db = require("./modules/db");
+const auth = require("./modules/auth");
+
+
 
 
 
 const indexRouter = require('./routes/index');
 const geoRouter = require('./routes/geo');
 const weatherRouter = require('./routes/weather');
-const usersRouter = require('./routes/users');
+const userRouter = require('./routes/user');
+const userApiRouter = require("./routes/api/user");
 
 
 const app = express();
@@ -36,15 +40,21 @@ db.init();
 
 
 
+app.use(auth);
 
+app.use('/user', userRouter);
+
+app.use('/api/user', userApiRouter);
 
 app.use('/', indexRouter);
 
-app.use('/users', usersRouter);
+
 
 app.use('/geo', geoRouter);
 
 app.use('/weather', weatherRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
