@@ -8,7 +8,7 @@ module.exports = {
 		conn.end();
 		return result.length > 0;
 	},
-	'addUser': async function (username, email, password) {
+	'addUser': async function (username, email, password, last, first, profile_image) {
 		if (username != null && email != null && password != null) {
 			if (!await this.isUser(username)) {
 				let conn = await db.getConnection();
@@ -22,11 +22,11 @@ module.exports = {
 
 
 
-				const result = await conn.query("insert into user (username, email, passHash) values (?,?,?)", [username, email, passHash]);
+				const result = await conn.query("insert into user (username, email, passHash, last, first, profile_image) values (?,?,?,?,?,?)", [username, email, passHash, last, first, profile_image]);
 				conn.end();
 
 
-				result.user = { username: username, email: email, user_id: Number(result.insertId) };
+				result.user = { username: username, email: email, user_id: Number(result.insertId), last: last, first: first, profile_image: profile_image };
 
 				return result;
 			} else {
