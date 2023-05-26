@@ -2,6 +2,6 @@ module.exports = {
 	host: "localhost",
 	user: "root",
 	password: "pwd",
-	database: "cache_ex",
+	database: "db_final_project",
 	connectionLimit: 5
 };
