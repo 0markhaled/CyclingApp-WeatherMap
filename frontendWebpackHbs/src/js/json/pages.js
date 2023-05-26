@@ -12,6 +12,11 @@ export default {
         },
 
         {
+            'name': 'Weather',
+            'headertext': "This is the weather",
+        },
+
+        {
             'name': 'Info',
             'headertext': "About Us",
         },
