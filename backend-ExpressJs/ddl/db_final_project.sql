@@ -42,32 +42,6 @@ INSERT INTO `cache` VALUES (1,'https://api.openweathermap.org/data/2.5/weather?l
 UNLOCK TABLES;
 
 --
--- Table structure for table `page`
---
-
-DROP TABLE IF EXISTS `page`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `page` (
-  `page_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) DEFAULT NULL,
-  `content` text DEFAULT NULL,
-  `key` varchar(100) NOT NULL,
-  `menu_order` int(11) DEFAULT NULL,
-  PRIMARY KEY (`page_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `page`
---
-
-LOCK TABLES `page` WRITE;
-/*!40000 ALTER TABLE `page` DISABLE KEYS */;
-/*!40000 ALTER TABLE `page` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 
@@ -139,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-25 20:35:54
+-- Dump completed on 2023-05-25 20:48:38
