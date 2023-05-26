@@ -19,6 +19,7 @@ import templateMap from './hbs/mappage.hbs';
 import templateContact from './hbs/contact.hbs';
 import templateInfo from './hbs/info.hbs';
 import templateWeather from './hbs/weather.hbs';
+import templateLogin from './hbs/templateLogin.hbs';
 
 // use root template, apply to "app" div
 let appEl = document.getElementById("app");
@@ -64,15 +65,24 @@ window.onload = () => {
 
 	}
 
-	let loginRegister = document.getElementsByClassName("loginregister");
+	let login = document.getElementById("logindialog-background");
 
-	for (let loginLink of loginRegister) {
+	let loginRegister = document.getElementById("btn-login");
+	loginRegister.addEventListener('click', function () {
+		login.style.display = "block";
+		// mainEl.innerHTML = templateLogin();
+	});
 
-		loginLink.addEventListener('click', function () {
+	let loginExit = document.getElementById("exitlogin");
+	loginExit.addEventListener('click', function () {
+		login.style.display = "none";
+	});
 
-		});
-	}
-
+	login.addEventListener('click', function (ev) {
+		if (ev.target === login) {
+			login.style.display = "none";
+		}
+	});
 };
 
 // Person handling weather can use this later
