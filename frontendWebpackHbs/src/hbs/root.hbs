@@ -1,0 +1,31 @@
+{{!-- <header>{{siteInfo.title}}</header> --}}
+{{!-- rename to top-nav-bar later--}}
+<div id="nav-bar">
+	<div id="languages">
+		<p>FR/EN</p>
+	</div>
+	<div id="logo">
+		<p>Logo Here as img</p>
+	</div>
+	<ul id="top-root-nav">
+		{{#each pages}}
+		<li class="navigation-li" data-link="{{name}}">{{name}}</li>
+		{{/each}}
+	</ul>
+
+	<div id="loginregister">
+		<p>Login</p>
+		<p>Register</p>
+	</div>
+</div>
+
+<div id="bottom-nav-bar">
+	<div>
+		<p>This is where the weather goes</p>
+	</div>
+</div>
+
+
+<main id="root-main">
+	<p>this is root</p>
+</main>
