@@ -28,7 +28,7 @@ CREATE TABLE `cache` (
   `data` longtext DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`cache_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `cache` (
 
 LOCK TABLES `cache` WRITE;
 /*!40000 ALTER TABLE `cache` DISABLE KEYS */;
+INSERT INTO `cache` VALUES (1,'https://api.openweathermap.org/data/2.5/weather?lat=45.4028986&lon=-75.683692&appid=82dc1d787a7efd97503ecec1a230ad4f&units=metric','{\"coord\":{\"lon\":-75.6837,\"lat\":45.4029},\"weather\":[{\"id\":801,\"main\":\"Clouds\",\"description\":\"few clouds\",\"icon\":\"02d\"}],\"base\":\"stations\",\"main\":{\"temp\":10.71,\"feels_like\":9.14,\"temp_min\":9.89,\"temp_max\":11.32,\"pressure\":1024,\"humidity\":50},\"visibility\":10000,\"wind\":{\"speed\":7.72,\"deg\":360,\"gust\":11.32},\"clouds\":{\"all\":20},\"dt\":1684971915,\"sys\":{\"type\":2,\"id\":2005537,\"country\":\"CA\",\"sunrise\":1684920230,\"sunset\":1684974936},\"timezone\":-14400,\"id\":6094817,\"name\":\"Ottawa\",\"cod\":200}','2023-05-24 19:45:16');
 /*!40000 ALTER TABLE `cache` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +86,7 @@ CREATE TABLE `user` (
   `profile_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_un` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +96,33 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usertracking`
+--
+
+DROP TABLE IF EXISTS `usertracking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usertracking` (
+  `usertracking_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `user_lat` int(11) DEFAULT NULL,
+  `user_lng` int(11) DEFAULT NULL,
+  PRIMARY KEY (`usertracking_id`),
+  KEY `usertracking_FK` (`user_id`),
+  CONSTRAINT `usertracking_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usertracking`
+--
+
+LOCK TABLES `usertracking` WRITE;
+/*!40000 ALTER TABLE `usertracking` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usertracking` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -110,4 +138,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-24 17:04:51
+-- Dump completed on 2023-05-25 20:14:51
