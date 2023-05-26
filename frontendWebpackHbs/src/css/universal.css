@@ -1,0 +1,22 @@
+/* Universal CSS */
+html {
+    color-scheme: light dark;
+}
+
+#container {
+    width: min(65ch, 100% - 4rem);
+    margin-inline: auto;
+}
+
+body {
+    font-family: system-ui;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+img,
+picture,
+svg {
+    max-width: 100%;
+    display: block;
+}

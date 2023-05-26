@@ -1,5 +1,10 @@
 // Styling
-import "./css/styles.css";
+import "./css/universal.css";
+import "./css/root.css";
+import "./css/landing.css";
+import "./css/mappage.css";
+import "./css/info.css";
+import "./css/contact.css";
 
 // Modules
 // import scrollBackground from "./js/scrollbackground.js"; use this later
@@ -13,6 +18,7 @@ import templateLanding from './hbs/landing.hbs';
 import templateMap from './hbs/mappage.hbs';
 import templateContact from './hbs/contact.hbs';
 import templateInfo from './hbs/info.hbs';
+import templateWeather from './hbs/weather.hbs';
 
 // use root template, apply to "app" div
 let appEl = document.getElementById("app");
@@ -46,6 +52,10 @@ window.onload = () => {
 				mainEl.innerHTML = templateInfo();
 			}
 
+			if (page.name === "Weather") {
+				mainEl.innerHTML = templateWeather();
+			}
+
 			else if (page.name === "Contact Us") {
 				mainEl.innerHTML = templateContact();
 			}
@@ -53,4 +63,20 @@ window.onload = () => {
 		});
 
 	}
+
+	let loginRegister = document.getElementsByClassName("loginregister");
+
+	for (let loginLink of loginRegister) {
+
+		loginLink.addEventListener('click', function () {
+
+		});
+	}
+
 };
+
+// Person handling weather can use this later
+// weather().then((data) => {
+// 	let weatherEl = document.getElementById("weatherBar");
+// 	weatherEl.innerHTML = templateWeather(data);
+// });

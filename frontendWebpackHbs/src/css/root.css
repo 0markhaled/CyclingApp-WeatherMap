@@ -1,0 +1,68 @@
+/* Root CSS */
+#nav-bar {
+    background-color: aqua;
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px black solid;
+    height: 80px;
+}
+
+#languages {
+    border: 2px black solid;
+    position: absolute;
+    left: 10px;
+    top: 28px;
+    text-align: center;
+    background-color: blanchedalmond;
+}
+
+#logo {
+    position: relative;
+    left: 4%;
+    top: 39%;
+    width: 14%;
+    height: 120%;
+    border: 2px black solid;
+    background-color: white;
+    text-align: center;
+}
+
+#top-root-nav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    border: 2px black solid;
+}
+
+.navigation-li {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border: 2px solid black;
+}
+
+#bottom-nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: 2px black solid;
+    padding: 0;
+    background-color: aquamarine;
+}
+
+ul>li:hover {
+    background-color: #9bd98a81;
+    color: black;
+    border-radius: 5px;
+    text-decoration: underline;
+}
+
+#loginregister {
+    display: inline-flex;
+}
+
+#loginregister>p {
+    padding: 8px;
+}

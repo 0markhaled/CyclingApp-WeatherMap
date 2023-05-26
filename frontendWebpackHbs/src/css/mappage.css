@@ -1,0 +1,30 @@
+/* Map Page CSS */
+#map-page-master-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    border: 2px black solid;
+    border-radius: 5px;
+}
+
+#location-header {
+    background-color: bisque;
+    border: 2px black solid;
+}
+
+#map-places {
+    background-color: bisque;
+    border: 2px black solid;
+    width: 25%;
+    height: 90vh;
+    border: 2px white solid;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+#map {
+    border: 2px black solid;
+    width: 75%;
+    height: 90vh;
+}
