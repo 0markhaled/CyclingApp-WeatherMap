@@ -110,6 +110,7 @@ CREATE TABLE `usertracking` (
   `user_id` int(10) unsigned NOT NULL,
   `user_lat` int(11) DEFAULT NULL,
   `user_lng` int(11) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`usertracking_id`),
   KEY `usertracking_FK` (`user_id`),
   CONSTRAINT `usertracking_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
@@ -138,4 +139,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-25 20:14:51
+-- Dump completed on 2023-05-25 20:35:54
