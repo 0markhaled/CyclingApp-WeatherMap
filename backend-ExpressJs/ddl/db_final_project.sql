@@ -60,7 +60,7 @@ CREATE TABLE `user` (
   `profile_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_un` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,6 +69,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (7,'12345','ottawa\'s','WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=','bHxsiP4SfE0KLnDUGY0j6lvqlryGGY/xtYEvDCFnglo=','2023-05-26 10:10:53','456','123','s.img');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,9 +83,8 @@ DROP TABLE IF EXISTS `usertracking`;
 CREATE TABLE `usertracking` (
   `usertracking_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
-  `user_lat` int(11) DEFAULT NULL,
-  `user_lng` int(11) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `location_target` text DEFAULT NULL,
   PRIMARY KEY (`usertracking_id`),
   KEY `usertracking_FK` (`user_id`),
   CONSTRAINT `usertracking_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
@@ -113,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-25 20:48:38
+-- Dump completed on 2023-05-26 10:50:32
