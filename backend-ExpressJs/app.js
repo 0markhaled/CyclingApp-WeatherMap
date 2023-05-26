@@ -13,7 +13,7 @@ const auth = require("./modules/auth");
 const indexRouter = require('./routes/index');
 const geoRouter = require('./routes/geo');
 const weatherRouter = require('./routes/weather');
-const userRouter = require('./routes/user');
+
 const userApiRouter = require("./routes/api/user");
 
 
@@ -42,7 +42,6 @@ db.init();
 
 app.use(auth);
 
-app.use('/user', userRouter);
 
 app.use('/api/user', userApiRouter);
 
