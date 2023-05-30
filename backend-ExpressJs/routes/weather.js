@@ -29,7 +29,8 @@ router.get('/aqi', async function (req, res, next) {
     let url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=45.4028986&lon=-75.683692&appid=82dc1d787a7efd97503ecec1a230ad4f`
     let fetch = await cache.fetchUrl(url);
     let out = {
-        "aqi": fetch.list[0].main.aqi
+        "aqi": fetch.list[0].main.aqi,
+        "pm10": fetch.list[0].components.pm10
     };
     res.json(out);
 });
