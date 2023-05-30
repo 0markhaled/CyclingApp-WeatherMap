@@ -5,6 +5,7 @@ import "./css/landing.css";
 import "./css/mappage.css";
 import "./css/info.css";
 import "./css/contact.css";
+import "./css/userpage.css";
 
 // Modules
 // import scrollBackground from "./js/scrollbackground.js"; use this later
@@ -19,7 +20,7 @@ import templateMap from './hbs/mappage.hbs';
 import templateContact from './hbs/contact.hbs';
 import templateInfo from './hbs/info.hbs';
 import templateWeather from './hbs/weather.hbs';
-import templateLogin from './hbs/templateLogin.hbs';
+import templateUserpage from './hbs/userpage.hbs';
 
 // use root template, apply to "app" div
 let appEl = document.getElementById("app");
@@ -55,6 +56,10 @@ window.onload = () => {
 
 			if (page.name === "Weather") {
 				mainEl.innerHTML = templateWeather();
+			}
+
+			if (page.name === "User Page") {
+				mainEl.innerHTML = templateUserpage();
 			}
 
 			else if (page.name === "Contact Us") {

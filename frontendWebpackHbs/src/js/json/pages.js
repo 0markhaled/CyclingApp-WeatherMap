@@ -22,6 +22,10 @@ export default {
         },
 
         {
+            'name': 'User Page',
+        },
+
+        {
             'name': 'Contact Us',
             'headertext': "Contact",
         }

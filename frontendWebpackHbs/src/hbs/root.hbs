@@ -14,20 +14,58 @@
 	</ul>
 
 	<div class="loginregister">
-		<button id="btn-login">Login</button>
-		<button id="btn-register">Register</button>
+		<button id="btn-login">Login or Register</button>
 	</div>
 </div>
 
 <div id="bottom-nav-bar">
-	<div>
+	<div id="weather-container">
 		<p>This is where the weather goes</p>
 	</div>
 </div>
 
 <div id="logindialog-background">
-	<div id="logindialog">
+	<div id="login-dialog">
+		<div id="login-wrapper">
+			<div id="login-form">
+				<form method="post">
+					<p>Login:</p>
+					<label for="email" class="label">Username:</label>
+					<input type="email" id="email" name="email" required asp-for="Email">
+
+					<label for="password" class="label">Password:</label>
+					<input type="password" id="password" name="password" required asp-for="Password">
+
+					<input type="submit" value="Login" class="submitbutton" />
+				</form>
+			</div>
+
+			<div id="register-form">
+				<form method="post">
+					<p>Register:</p>
+					<label for="firstname" class="label">Enter your first name:</label>
+					<input type="firstname" id="firstname" name="firstname" required asp-for="Firstname">
+
+					<label for="lastname" class="label">Enter your last name:</label>
+					<input type="lastname" id="lastname" name="lastname" required asp-for="Lastname">
+
+					<label for="email" class="label">Enter your email:</label>
+					<input type="email" id="email" name="email" required asp-for="Email">
+
+					<label for="username" class="label">Enter a username:</label>
+					<input type="username" id="username" name="username" required asp-for="Username">
+
+					<label for="password" class="label">Enter a Password:</label>
+					<input type="password" id="password" name="password" required asp-for="Password">
+
+					{{!-- double check this line --}}
+					<input type="submit" value="Login" class="submitbutton" />
+				</form>
+			</div>
+		</div>
 		<button id="exitlogin">X</button>
+
+
 	</div>
 </div>
 
