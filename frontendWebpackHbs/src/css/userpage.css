@@ -1,0 +1,34 @@
+#userpage-master-container {
+    border: 2px solid black;
+    height: 700px;
+    display: flex;
+    flex-direction: row;
+}
+
+#userpage-column {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    border: black 2px solid;
+    background-color: rgba(255, 255, 255, 0.712);
+    border-radius: 5px;
+    padding-right: 8px;
+}
+
+#userpage-info {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border: black 2px solid;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.712);
+}
+
+#user-banner {
+    border: black 2px solid;
+}
+
+#user-route {
+    text-align: center;
+    vertical-align: middle;
+}

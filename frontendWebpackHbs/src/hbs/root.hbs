@@ -20,7 +20,7 @@
 </div>
 
 <div id="bottom-nav-bar">
-	<div>
+	<div id="weather-container">
 		<p>This is where the weather goes</p>
 	</div>
 </div>
@@ -28,6 +28,18 @@
 <div id="logindialog-background">
 	<div id="logindialog">
 		<button id="exitlogin">X</button>
+		<div id="login-form">
+			<form method="post">
+				<p>Login:</p>
+				<label for="email" class="label">Username:</label>
+				<input type="email" id="email" name="email" required asp-for="Email">
+
+				<label for="password" class="label">Password:</label>
+				<input type="password" id="password" name="password" required asp-for="Password">
+
+				<input type="submit" value="Login" class="submitbutton" />
+			</form>
+		</div>
 	</div>
 </div>
 
