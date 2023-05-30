@@ -8,6 +8,7 @@ import "./css/contact.css";
 import "./css/userpage.css";
 
 // Modules
+import loginregisterWindow from "./js/loginregisterWindow";
 // import scrollBackground from "./js/scrollbackground.js"; use this later
 
 // list of pages for nav-link
@@ -28,42 +29,23 @@ let appEl = document.getElementById("app");
 // API url
 const apiUrl = "https://localhost:7777/api/";
 
-
 appEl.innerHTML = templateRoot(pages);
 
 let mainEl = document.getElementById("root-main");
 
-
 window.onload = () => {
-
-	const hideLogin = function () {
-		let login = document.getElementById("logindialog-background");
-		login.style.display = "none";
-	}
-
-
 	mainEl.innerHTML = templateLanding();
 
 	let elsNavLink = document.getElementsByClassName("navigation-li");
 
-	// login form stuff
-	let loginbtn = document.getElementById("loginsubmit");
-
-	loginbtn.addEventListener("click", async function () {
-		let loginEmail = document.getElementById("loginEmail").value;
-		let loginPassword = document.getElementById("login-password").value;
-		console.log(loginEmail, loginPassword);
-
-		// this does the fetch request
-		let loginResult = await fetch(apiUrl + `user/?username=${loginEmail}&password=${loginPassword}`);
-
-		let loginResultjson = await loginResult.json(); // processes loginResult into json
-
-		if (loginResultjson.loggedIn) {
-			mainEl.innerHTML = templateUserpage();
-			hideLogin();
+	// calling the Login window
+	let loginModule = new loginregisterWindow("btn-login", "exitlogin", "logindialog-background", "loginsubmit", (result) => {
+		if (result.loggedIn) {
+			mainEl.innerHTML = templateUserpage(loginModule.user);
 		}
 	});
+
+	loginModule.init();
 
 	for (let elLink of elsNavLink) {
 
@@ -94,27 +76,8 @@ window.onload = () => {
 			else if (page.name === "Contact Us") {
 				mainEl.innerHTML = templateContact();
 			}
-
 		});
-
 	}
-
-	let loginRegister = document.getElementById("btn-login");
-	loginRegister.addEventListener('click', function () {
-		login.style.display = "block";
-		// mainEl.innerHTML = templateLogin();
-	});
-
-	let loginExit = document.getElementById("exitlogin");
-	loginExit.addEventListener('click', function () {
-		hideLogin();
-	});
-
-	login.addEventListener('click', function (ev) {
-		if (ev.target === login) {
-			login.style.display = "none";
-		}
-	});
 };
 
 // Person handling weather can use this later
