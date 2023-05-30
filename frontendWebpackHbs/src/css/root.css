@@ -71,28 +71,23 @@ ul>li:hover {
     padding: 8px;
 }
 
-/* Make this 100% of the screenview */
-/* don't forget */
-#logindialog-background {
-    position: absolute;
-    display: none;
-    top: 0;
-    height: 90vh;
-    width: 90vw;
-    padding: 0;
-    margin: 0;
-    border: 2px solid black;
-    background-color: rgba(255, 228, 196, 0.652);
-    z-index: 1;
-}
-
-#logindialog {
-    position: absolute;
-    top: 20%;
-    height: 30vh;
-    width: 75%;
+/* Login / Register form */
+#login-dialog {
     background-color: bisque;
     border: 2px solid black;
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 8px;
+}
+
+#login-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 #login-form {
@@ -101,7 +96,44 @@ ul>li:hover {
     justify-content: center;
     flex-direction: column;
     border: 2px solid black;
+    width: 40%;
+    height: 100%;
+    margin-right: 8px;
 }
+
+#register-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid black;
+    width: 40%;
+    height: 100%;
+    margin-left: 8px;
+}
+
+/* Make this 100% of the screenview */
+/* don't forget */
+#logindialog-background {
+    position: absolute;
+    display: none;
+    top: 0;
+    height: 99%;
+    width: 99%;
+    padding: 0;
+    margin: 0px;
+    border: 2px solid black;
+    background-color: rgba(255, 228, 196, 0.652);
+    z-index: 1;
+}
+
+#exitlogin {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+
 
 /* label {
     display: block;
