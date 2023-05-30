@@ -23,7 +23,7 @@ module.exports = async (req, res, next) => {
 	if (req.query.password != undefined) {
 		password = req.query.password;
 	}
-	console.log(req.query, username, password);
+	//console.log(req.query, username, password);
 
 	if (username != null && password != null) {
 		let auth = await user.passwordLogin(
@@ -68,7 +68,7 @@ module.exports = async (req, res, next) => {
 		}
 
 	}
-	console.log(req.login);
+	//console.log(req.login);
 	next();
 
 }

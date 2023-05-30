@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../../models/user');
+const cors = require('cors');
+
+router.use(cors());
 
 
 // if user is logged in:
@@ -8,7 +11,6 @@ const user = require('../../models/user');
 // not logged in
 // 	loggedIn = false
 router.get('/', async function (req, res, next) {
-
 	res.json(req.login);
 });
 

@@ -30,13 +30,14 @@
 			<div id="login-form">
 				<form method="post">
 					<p>Login:</p>
-					<label for="email" class="label">Username:</label>
-					<input type="email" id="email" name="email" required asp-for="Email">
+					<label for="email" class="label">Email:</label>
+					<input type="email" id="loginEmail" placeholder="Email" name="email" required asp-for="Email">
 
 					<label for="password" class="label">Password:</label>
-					<input type="password" id="password" name="password" required asp-for="Password">
+					<input type="password" id="login-password" placeholder="Password" name="password" required
+						asp-for="Password">
 
-					<input type="submit" value="Login" class="submitbutton" />
+					<input type="button" value="Login" id="loginsubmit" />
 				</form>
 			</div>
 
@@ -44,22 +45,25 @@
 				<form method="post">
 					<p>Register:</p>
 					<label for="firstname" class="label">Enter your first name:</label>
-					<input type="firstname" id="firstname" name="firstname" required asp-for="Firstname">
+					<input type="firstname" id="firstname" placeholder="First Name" name="firstname" required
+						asp-for="Firstname">
 
 					<label for="lastname" class="label">Enter your last name:</label>
-					<input type="lastname" id="lastname" name="lastname" required asp-for="Lastname">
+					<input type="lastname" id="lastname" placeholder="Last Name" name="lastname" required
+						asp-for="Lastname">
 
 					<label for="email" class="label">Enter your email:</label>
-					<input type="email" id="email" name="email" required asp-for="Email">
+					<input type="email" id="email" placeholder="Email" name="email" required>
 
 					<label for="username" class="label">Enter a username:</label>
-					<input type="username" id="username" name="username" required asp-for="Username">
+					<input type="username" id="username" placeholder="Username" name="username" required>
 
 					<label for="password" class="label">Enter a Password:</label>
-					<input type="password" id="password" name="password" required asp-for="Password">
+					<input type="password" id="register-password" placeholder="Password" name="password" required
+						asp-for="Password">
 
 					{{!-- double check this line --}}
-					<input type="submit" value="Login" class="submitbutton" />
+					<input type="button" value="Register" class="submitbutton" />
 				</form>
 			</div>
 		</div>

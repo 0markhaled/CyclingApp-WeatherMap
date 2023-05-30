@@ -25,6 +25,10 @@ import templateUserpage from './hbs/userpage.hbs';
 // use root template, apply to "app" div
 let appEl = document.getElementById("app");
 
+// API url
+const apiUrl = "https://localhost:7777/api/";
+
+
 appEl.innerHTML = templateRoot(pages);
 
 let mainEl = document.getElementById("root-main");
@@ -32,9 +36,34 @@ let mainEl = document.getElementById("root-main");
 
 window.onload = () => {
 
+	const hideLogin = function () {
+		let login = document.getElementById("logindialog-background");
+		login.style.display = "none";
+	}
+
+
 	mainEl.innerHTML = templateLanding();
 
 	let elsNavLink = document.getElementsByClassName("navigation-li");
+
+	// login form stuff
+	let loginbtn = document.getElementById("loginsubmit");
+
+	loginbtn.addEventListener("click", async function () {
+		let loginEmail = document.getElementById("loginEmail").value;
+		let loginPassword = document.getElementById("login-password").value;
+		console.log(loginEmail, loginPassword);
+
+		// this does the fetch request
+		let loginResult = await fetch(apiUrl + `user/?username=${loginEmail}&password=${loginPassword}`);
+
+		let loginResultjson = await loginResult.json(); // processes loginResult into json
+
+		if (loginResultjson.loggedIn) {
+			mainEl.innerHTML = templateUserpage();
+			hideLogin();
+		}
+	});
 
 	for (let elLink of elsNavLink) {
 
@@ -70,8 +99,6 @@ window.onload = () => {
 
 	}
 
-	let login = document.getElementById("logindialog-background");
-
 	let loginRegister = document.getElementById("btn-login");
 	loginRegister.addEventListener('click', function () {
 		login.style.display = "block";
@@ -80,7 +107,7 @@ window.onload = () => {
 
 	let loginExit = document.getElementById("exitlogin");
 	loginExit.addEventListener('click', function () {
-		login.style.display = "none";
+		hideLogin();
 	});
 
 	login.addEventListener('click', function (ev) {
