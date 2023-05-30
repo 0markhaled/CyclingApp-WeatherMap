@@ -69,30 +69,32 @@ LOCK TABLES `park` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `route`
+-- Table structure for table `rating`
 --
 
-DROP TABLE IF EXISTS `route`;
+DROP TABLE IF EXISTS `rating`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `route` (
-  `route_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `rating` (
+  `rating_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
-  `route_name` varchar(100) DEFAULT NULL,
-  `rate` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`route_id`),
-  KEY `route_FK` (`user_id`),
-  CONSTRAINT `route_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+  `park_id` int(10) unsigned NOT NULL,
+  `rating_stars(1-5)` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`rating_id`),
+  KEY `rating_FK` (`park_id`),
+  KEY `rating_FK_1` (`user_id`),
+  CONSTRAINT `rating_FK` FOREIGN KEY (`park_id`) REFERENCES `park` (`park_id`),
+  CONSTRAINT `rating_FK_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `route`
+-- Dumping data for table `rating`
 --
 
-LOCK TABLES `route` WRITE;
-/*!40000 ALTER TABLE `route` DISABLE KEYS */;
-/*!40000 ALTER TABLE `route` ENABLE KEYS */;
+LOCK TABLES `rating` WRITE;
+/*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -169,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-30 11:13:51
+-- Dump completed on 2023-05-30 12:26:22
