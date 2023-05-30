@@ -13,6 +13,7 @@ const auth = require("./modules/auth");
 const indexRouter = require('./routes/index');
 const geoRouter = require('./routes/geo');
 const weatherRouter = require('./routes/weather');
+// const aqiRouter = require('./routes/weather/aqi')
 
 const userApiRouter = require("./routes/api/user");
 
@@ -52,6 +53,8 @@ app.use('/', indexRouter);
 app.use('/geo', geoRouter);
 
 app.use('/weather', weatherRouter);
+
+// app.use('/weather/aqi', aqiRouter);
 
 
 
