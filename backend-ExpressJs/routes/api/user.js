@@ -5,7 +5,7 @@ const cors = require('cors');
 
 router.use(cors());
 
-
+router.use(cors());
 // if user is logged in:
 // 	loggedIn = true, user = {user_id, username, email}
 // not logged in

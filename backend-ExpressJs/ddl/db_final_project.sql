@@ -28,7 +28,7 @@ CREATE TABLE `cache` (
   `data` longtext DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`cache_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `cache` (
 
 LOCK TABLES `cache` WRITE;
 /*!40000 ALTER TABLE `cache` DISABLE KEYS */;
-INSERT INTO `cache` VALUES (1,'https://api.openweathermap.org/data/2.5/weather?lat=45.4028986&lon=-75.683692&appid=82dc1d787a7efd97503ecec1a230ad4f&units=metric','{\"coord\":{\"lon\":-75.6837,\"lat\":45.4029},\"weather\":[{\"id\":801,\"main\":\"Clouds\",\"description\":\"few clouds\",\"icon\":\"02d\"}],\"base\":\"stations\",\"main\":{\"temp\":10.71,\"feels_like\":9.14,\"temp_min\":9.89,\"temp_max\":11.32,\"pressure\":1024,\"humidity\":50},\"visibility\":10000,\"wind\":{\"speed\":7.72,\"deg\":360,\"gust\":11.32},\"clouds\":{\"all\":20},\"dt\":1684971915,\"sys\":{\"type\":2,\"id\":2005537,\"country\":\"CA\",\"sunrise\":1684920230,\"sunset\":1684974936},\"timezone\":-14400,\"id\":6094817,\"name\":\"Ottawa\",\"cod\":200}','2023-05-24 19:45:16');
+INSERT INTO `cache` VALUES (1,'https://api.openweathermap.org/data/2.5/weather?lat=45.4028986&lon=-75.683692&appid=82dc1d787a7efd97503ecec1a230ad4f&units=metric','{\"coord\":{\"lon\":-75.6837,\"lat\":45.4029},\"weather\":[{\"id\":801,\"main\":\"Clouds\",\"description\":\"few clouds\",\"icon\":\"02d\"}],\"base\":\"stations\",\"main\":{\"temp\":10.71,\"feels_like\":9.14,\"temp_min\":9.89,\"temp_max\":11.32,\"pressure\":1024,\"humidity\":50},\"visibility\":10000,\"wind\":{\"speed\":7.72,\"deg\":360,\"gust\":11.32},\"clouds\":{\"all\":20},\"dt\":1684971915,\"sys\":{\"type\":2,\"id\":2005537,\"country\":\"CA\",\"sunrise\":1684920230,\"sunset\":1684974936},\"timezone\":-14400,\"id\":6094817,\"name\":\"Ottawa\",\"cod\":200}','2023-05-24 19:45:16'),(2,'https://api.openweathermap.org/data/2.5/weather?lat=45.4028986&lon=-75.683692&appid=82dc1d787a7efd97503ecec1a230ad4f&units=metric','{\"coord\":{\"lon\":-75.6837,\"lat\":45.4029},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01d\"}],\"base\":\"stations\",\"main\":{\"temp\":17.37,\"feels_like\":16.55,\"temp_min\":15.32,\"temp_max\":19.1,\"pressure\":1024,\"humidity\":53},\"visibility\":10000,\"wind\":{\"speed\":3.09,\"deg\":90},\"clouds\":{\"all\":0},\"dt\":1685451497,\"sys\":{\"type\":2,\"id\":2005537,\"country\":\"CA\",\"sunrise\":1685438360,\"sunset\":1685493691},\"timezone\":-14400,\"id\":6094817,\"name\":\"Ottawa\",\"cod\":200}','2023-05-30 08:58:18'),(3,'http://api.openweathermap.org/data/2.5/air_pollution?lat=45.4028986&lon=-75.683692&appid=82dc1d787a7efd97503ecec1a230ad4f','{\"coord\":{\"lon\":-75.6837,\"lat\":45.4029},\"list\":[{\"main\":{\"aqi\":1},\"components\":{\"co\":273.71,\"no\":2.65,\"no2\":7.63,\"o3\":55.08,\"so2\":5.13,\"pm2_5\":3.96,\"pm10\":5.28,\"nh3\":2.09},\"dt\":1685451359}]}','2023-05-30 08:58:24');
 /*!40000 ALTER TABLE `cache` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,6 +69,35 @@ LOCK TABLES `park` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `rating`
+--
+
+DROP TABLE IF EXISTS `rating`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `rating` (
+  `rating_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `park_id` int(10) unsigned NOT NULL,
+  `rating_stars(1-5)` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`rating_id`),
+  KEY `rating_FK` (`park_id`),
+  KEY `rating_FK_1` (`user_id`),
+  CONSTRAINT `rating_FK` FOREIGN KEY (`park_id`) REFERENCES `park` (`park_id`),
+  CONSTRAINT `rating_FK_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rating`
+--
+
+LOCK TABLES `rating` WRITE;
+/*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rating` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -96,7 +125,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (7,'12345','ottawa\'s','WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=','bHxsiP4SfE0KLnDUGY0j6lvqlryGGY/xtYEvDCFnglo=','2023-05-26 10:10:53','456','123','s.img');
+INSERT INTO `user` VALUES (7,'12345','ottawa\'s','WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=','5+OdH4RNECuZlJ1vGWKc2O7MQsG7ExQfydUniVVB0PI=','2023-05-26 10:10:53','456','123','s.img');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-26 11:41:46
+-- Dump completed on 2023-05-30 12:26:22
