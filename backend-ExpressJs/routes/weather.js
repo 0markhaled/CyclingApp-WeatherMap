@@ -30,6 +30,7 @@ router.get('/aqi', async function (req, res, next) {
     let fetch = await cache.fetchUrl(url);
     let out = {
         "aqi": fetch.list[0].main.aqi,
+        "pm2.5": fetch.list[0].components.pm2_5,
         "pm10": fetch.list[0].components.pm10
     };
     res.json(out);
