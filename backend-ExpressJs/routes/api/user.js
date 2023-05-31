@@ -3,7 +3,7 @@ const router = express.Router();
 const user = require('../../models/user');
 const cors = require('cors');
 
-router.use(cors());
+
 
 router.use(cors());
 // if user is logged in:
