@@ -10,7 +10,11 @@ router.use(cors());
 
 router.get('/', async function (req, res, next) {
 
-    let url = 'https://maps.ottawa.ca/arcgis/rest/services/CyclingMap/MapServer/3/query?outFields=*&where=1%3D1&f=geojson';
+
+    let offset = req.query.offset == undefined ? 0 : req.query.offset;
+
+
+    let url = `https://maps.ottawa.ca/arcgis/rest/services/CyclingMap/MapServer/3/query?outFields=*&where=1%3D1&f=geojson&resultOffset=${offset}&resultRecordCount=1000`;
     let fetch = await axios.get(url); //returns a promise
     let fetchResults = fetch.data;
 
