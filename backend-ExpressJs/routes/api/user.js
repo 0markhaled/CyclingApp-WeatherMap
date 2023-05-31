@@ -3,8 +3,6 @@ const router = express.Router();
 const user = require('../../models/user');
 const cors = require('cors');
 
-
-
 router.use(cors());
 // if user is logged in:
 // 	loggedIn = true, user = {user_id, username, email}
@@ -29,16 +27,16 @@ router.post('/register', async function (req, res, next) {
 		res.json({ "message": "Already Loggedin" });
 
 	} else {
-		let re = await user.addUser(req.body.username, req.body.email, req.body.password, req.body.last, req.body.first, req.body.profile_image);
+		console.log(req.body);
+		// whats profile_image?
+		let re = await user.addUser(req.body.userUsername, req.body.userEmail, req.body.registerPassword, req.body.userLast, req.body.userFirst, "req.body.profile_image");
 
 		if (re && re.affectedRows == 1) {
 			res.json(re.user);
 		} else {
 			res.json({ "message": "Could not register" });
 		}
-
 	}
-
 });
 
 module.exports = router;
