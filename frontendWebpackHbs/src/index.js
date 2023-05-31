@@ -8,7 +8,8 @@ import "./css/contact.css";
 import "./css/userpage.css";
 
 import jsLocation from "./js/jsLocation";
-import tt from '@tomtom-international/web-sdk-maps';
+
+import mapTool from "./js/map.js";
 
 // Modules
 import loginregisterWindow from "./js/loginregisterWindow";
@@ -17,8 +18,8 @@ import loginregisterWindow from "./js/loginregisterWindow";
 // list of pages for nav-link
 import pages from './js/json/pages.js';
 
-//toggle feature for info page
-import toggle from './js/info';
+//import toggle feature in info page
+import toggle from "./js/info";
 
 // templates
 import templateRoot from './hbs/root.hbs';
@@ -93,7 +94,6 @@ window.onload = () => {
 			if (page.name === "Info") {
 				mainEl.innerHTML = templateInfo();
 				toggle();
-
 				// scrollBackground();
 			}
 
