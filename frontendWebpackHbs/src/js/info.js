@@ -4,9 +4,10 @@ export default () => {
 
     for (let i = 0; i < toggleButtons.length; i++) {
         toggleButtons[i].addEventListener('click', function () {
-            console.log("clicked");
             var wrapper = this.parentNode.querySelector('.info-wrapper');
             wrapper.classList.toggle('open');
+            var infoContainer = document.getElementById('info-master-container');
+            infoContainer.classList.toggle('overlay');
         });
     }
 

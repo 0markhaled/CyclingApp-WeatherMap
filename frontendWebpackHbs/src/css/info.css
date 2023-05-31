@@ -1,6 +1,6 @@
 /* Info page CSS */
 #info-big-container {
-    background-color: rgba(255, 255, 255, 0.635);
+    background-color: rgba(255, 255, 255, 0.315);
     background-repeat: no-repeat;
     background-size: contain;
     display: flex;
@@ -51,6 +51,7 @@
     margin-right: 40px;
     margin-bottom: 250px;
     margin-top: 100px;
+
 }
 
 .info-small-container {
@@ -60,6 +61,7 @@
     margin-right: 60px;
     margin-left: 60px;
     align-items: center;
+
 }
 
 #info-big-bottom-container {
@@ -74,10 +76,25 @@
 .info-togglebtn {
     width: 180px;
     height: 30px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: aquamarine;
+    box-shadow: 3px 8px #888888;
+}
+
+.info-togglebtn:active {
+    background-color: blue;
+    color: white;
+    box-shadow: none;
+}
+
+.info-togglebtn:hover {
+    background-color: blue;
+    color: white;
 }
 
 .info-expandable {
-    min-height: 0;
+    height: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     display: none;
@@ -85,9 +102,11 @@
     border-style: solid;
     border-radius: 10px;
     border-color: blueviolet;
+    transition: 200ms height ease-in;
 }
 
 .info-wrapper.open .info-expandable {
     display: block;
+    height: auto;
     /* Show the expandable content when .open class is applied */
 }
