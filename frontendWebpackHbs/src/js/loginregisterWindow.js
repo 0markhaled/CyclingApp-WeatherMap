@@ -86,32 +86,18 @@ export default class {
 
             me.registerCallback(registerResultjson);
 
-            //let re = await user.addUser(req.body.username, req.body.email, req.body.password, req.body.last, req.body.first, req.body.profile_image);
-
-
-            // let loginResultjson = await loginResult.json(); // processes loginResult into json
-
-            // if (loginResultjson.loggedIn) {
-            //     me.hideLogin();
-            //     me.user = loginResultjson.user;
-            // }
-
-            // me.loggedIn = loginResultjson.loggedIn;
-
-            // me.callback(loginResultjson);
-
         });
 
         this.submitLoginBtn.addEventListener("click", async function () {
             let loginEmail = document.getElementById("loginEmail").value;
             let loginPassword = document.getElementById("login-password").value;
-            console.log(loginEmail, loginPassword);
 
             // this does the fetch request
             let loginResult = await fetch(apiUrl + `user/?username=${loginEmail}&password=${loginPassword}`);
 
             let loginResultjson = await loginResult.json(); // processes loginResult into json
 
+            // this isn't popping up the userPage template anymore
             if (loginResultjson.loggedIn) {
                 me.hideLogin();
                 me.user = loginResultjson.user;

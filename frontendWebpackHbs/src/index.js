@@ -8,7 +8,7 @@ import "./css/contact.css";
 import "./css/userpage.css";
 import mapStyle from "./js/maplook.js";
 import jsLocation from "./js/jsLocation";
-import tt from '@tomtom-international/web-sdk-maps';
+// import tt from '@tomtom-international/web-sdk-maps';
 
 // Modules
 import loginregisterWindow from "./js/loginregisterWindow";
