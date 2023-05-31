@@ -63,6 +63,7 @@ window.onload = () => {
 
 			if (page.name === "Info") {
 				mainEl.innerHTML = templateInfo();
+				// scrollBackground();
 			}
 
 			if (page.name === "Weather") {
