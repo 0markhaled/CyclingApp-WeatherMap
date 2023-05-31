@@ -9,6 +9,7 @@ module.exports = {
 		return result.length > 0;
 	},
 	'addUser': async function (username, email, password, last, first, profile_image) {
+		console.log(username, email, password, last, first);
 		if (username != null && email != null && password != null) {
 			if (!await this.isUser(username)) {
 				let conn = await db.getConnection();
@@ -19,12 +20,8 @@ module.exports = {
 				// digest outputs it to a value
 				const passHash = (crypto.createHash('sha256')).update(password).digest('base64');
 
-
-
-
 				const result = await conn.query("insert into user (username, email, passHash, last, first, profile_image) values (?,?,?,?,?,?)", [username, email, passHash, last, first, profile_image]);
 				conn.end();
-
 
 				result.user = { username: username, email: email, user_id: Number(result.insertId), last: last, first: first, profile_image: profile_image };
 

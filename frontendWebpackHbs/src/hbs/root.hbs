@@ -45,13 +45,10 @@
 				<form method="post">
 					<p>Register:</p>
 					<label for="firstname" class="label">Enter your first name:</label>
-					<input type="firstname" id="firstname" placeholder="First Name" name="firstname" required
-						asp-for="Firstname">
+					<input type="firstname" id="firstname" placeholder="First Name" name="firstname" required>
 
 					<label for="lastname" class="label">Enter your last name:</label>
-					<input type="lastname" id="lastname" placeholder="Last Name" name="lastname" required
-						asp-for="Lastname">
-
+					<input type="lastname" id="lastname" placeholder="Last Name" name="lastname" required>
 					<label for="email" class="label">Enter your email:</label>
 					<input type="email" id="email" placeholder="Email" name="email" required>
 
@@ -59,11 +56,10 @@
 					<input type="username" id="username" placeholder="Username" name="username" required>
 
 					<label for="password" class="label">Enter a Password:</label>
-					<input type="password" id="register-password" placeholder="Password" name="password" required
-						asp-for="Password">
+					<input type="password" id="register-password" placeholder="Password" name="password" required>
 
 					{{!-- double check this line --}}
-					<input type="button" value="Register" class="submitbutton" />
+					<input type="button" value="Register" id="registersubmit" />
 				</form>
 			</div>
 		</div>

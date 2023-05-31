@@ -42,11 +42,26 @@ window.onload = () => {
 	let elsNavLink = document.getElementsByClassName("navigation-li");
 
 	// calling the Login window
-	let loginModule = new loginregisterWindow("btn-login", "exitlogin", "logindialog-background", "loginsubmit", (result) => {
-		if (result.loggedIn) {
-			mainEl.innerHTML = templateUserpage(loginModule.user);
-		}
-	});
+	let loginModule = new loginregisterWindow(
+		"btn-login",
+		"exitlogin",
+		"logindialog-background",
+		"loginsubmit",
+		"registersubmit",
+		(result) => {
+			if (result.loggedIn) {
+				mainEl.innerHTML = templateUserpage(loginModule.user);
+			}
+		},
+		// registerCallback parameter
+		// add system to send emails for when a user successfully registers to confirm registration
+		(result) => {
+			if (result.username != undefined) { // user successfully registered
+				// loginModule.hideLogin();
+			} else {
+				console.log("Not Registered or user exists already");
+			}
+		});
 
 	loginModule.init();
 
