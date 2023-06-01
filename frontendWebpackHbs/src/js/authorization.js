@@ -25,11 +25,16 @@ export default class {
         let ch = localStorage.getItem("token");
         console.log(uid, ch);
 
-        let loginResult = await fetch(apiUrl + `user/?uid=${uid}&ch=${ch}`);
+        if (uid != null && ch != null) {
 
-        let loginResultjson = await loginResult.json(); // processes loginResult into json
+            let loginResult = await fetch(apiUrl + `user/?uid=${uid}&ch=${ch}`);
 
-        return loginResultjson;
+            let loginResultjson = await loginResult.json(); // processes loginResult into json
+
+            return loginResultjson;
+        } else {
+            return { "loggedIn": false };
+        }
 
         // if (loginResultjson.loggedIn) {
         //     me.hideLogin();
