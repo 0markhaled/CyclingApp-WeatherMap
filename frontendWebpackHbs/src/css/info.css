@@ -5,9 +5,9 @@
     height: 100%;
     width: 100%;
     margin-bottom: 30px;
-    margin-left: 2px;
-    margin-right: 8px;
-    margin-top: 30px;
+    margin-left: 1px;
+    left: 0;
+    margin-top: 0;
     position: relative;
 }
 
@@ -96,11 +96,12 @@
     border-style: solid;
     border-radius: 10px;
     border-color: blueviolet;
-    transition: 200ms height ease-in;
+    /* transition: 200ms height ease-in; */
 }
 
 .info-wrapper.open .info-expandable {
-    display: block;
+    display: flex;
+    width: 170px;
     height: auto;
     background-color: rgba(255, 255, 255, 0.719);
     /* Show the expandable content when .open class is applied */
