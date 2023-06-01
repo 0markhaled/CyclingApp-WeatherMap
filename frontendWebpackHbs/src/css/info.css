@@ -1,4 +1,112 @@
 /* Info page CSS */
-#info-master-container {
+#info-big-container {
+    background-color: rgba(255, 255, 255, 0.315);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    height: 1200px;
+    width: auto;
+    margin-bottom: 30px;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 30px;
+    position: relative;
+}
+
+#info-big-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/info-background.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 1;
+    z-index: -1;
+    pointer-events: none;
+    /* Ensure the overlay doesn't interfere with button clicks */
+    transition: opacity 0.3s ease;
+    /* Smooth transition effect */
+}
+
+#info-master-container.overlay::before {
+    opacity: 0.3;
+    /* Set the opacity to 30% when the overlay class is applied */
+}
+
+#info-big-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#info-big-top-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 250px;
+    margin-top: 100px;
+
+}
+
+.info-small-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-right: 60px;
+    margin-left: 60px;
+    align-items: center;
+
+}
+
+#info-big-bottom-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    position: static;
+}
+
+.info-togglebtn {
+    width: 180px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: aquamarine;
+    box-shadow: 3px 8px #888888;
+}
+
+.info-togglebtn:active {
     background-color: blue;
+    color: white;
+    box-shadow: none;
+}
+
+.info-togglebtn:hover {
+    background-color: blue;
+    color: white;
+}
+
+.info-expandable {
+    height: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    display: none;
+    border: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: blueviolet;
+    transition: 200ms height ease-in;
+}
+
+.info-wrapper.open .info-expandable {
+    display: block;
+    height: auto;
+    /* Show the expandable content when .open class is applied */
 }

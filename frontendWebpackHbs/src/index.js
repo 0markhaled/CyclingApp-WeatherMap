@@ -12,11 +12,15 @@ import jsLocation from "./js/jsLocation";
 import mapTool from "./js/map.js";
 
 // Modules
-import loginregisterWindow from "./js/loginregisterWindow";
+import loginregisterWindow from "./js/loginregisterWindow.js";
+import authorization from "./js/authorization.js";
 // import scrollBackground from "./js/scrollbackground.js"; use this later
 
 // list of pages for nav-link
 import pages from './js/json/pages.js';
+
+//import toggle feature in info page
+import toggle from "./js/info";
 
 // templates
 import templateRoot from './hbs/root.hbs';
@@ -39,7 +43,17 @@ let mainEl = document.getElementById("root-main");
 
 let map;
 
-window.onload = () => {
+window.onload = async () => {
+
+	// event handler for logout btn
+	document.getElementById("btn-logout").addEventListener('click', (ev) => {
+		authorization.logOut();
+		// maybe add something here to make it a cleaner transition
+		mainEl.innerHTML = templateLanding();
+	});
+
+	authorization.loginState = await authorization.storedLogin();
+
 	mainEl.innerHTML = templateLanding();
 
 	let elsNavLink = document.getElementsByClassName("navigation-li");
@@ -52,8 +66,12 @@ window.onload = () => {
 		"loginsubmit",
 		"registersubmit",
 		(result) => {
+			authorization.loginState = result;
+
 			if (result.loggedIn) {
-				mainEl.innerHTML = templateUserpage(loginModule.user);
+				mainEl.innerHTML = templateUserpage(authorization.loginState);
+				authorization.saveCredentials(result.cookie, result.user.user_id);
+
 			}
 		},
 		// registerCallback parameter
@@ -90,6 +108,7 @@ window.onload = () => {
 
 			if (page.name === "Info") {
 				mainEl.innerHTML = templateInfo();
+				toggle();
 				// scrollBackground();
 			}
 
@@ -98,7 +117,7 @@ window.onload = () => {
 			}
 
 			if (page.name === "User Page") {
-				mainEl.innerHTML = templateUserpage();
+				mainEl.innerHTML = templateUserpage(authorization.loginState);
 			}
 
 			else if (page.name === "Contact Us") {
