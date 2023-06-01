@@ -26,6 +26,7 @@
 		"webpack-cli": "^5.1.1"
 	},
 	"dependencies": {
-		"@tomtom-international/web-sdk-maps": "^6.23.0"
+		"@tomtom-international/web-sdk-maps": "^6.23.0",
+		"leaflet-routing-machine": "^3.2.12"
 	}
 }

@@ -83,7 +83,7 @@ window.onload = () => {
 				jsLocation((position) => {
 					console.log(position);
 					map = new mapTool("map", position);
-					map.drawCycleRoutes();
+					// map.drawCycleRoutes();
 
 				});
 			}
