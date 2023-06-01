@@ -35,7 +35,7 @@ export default class {
         this.login = document.getElementById(clickOffBg);
         this.submitLoginBtn = document.getElementById(submitbtn);
         this.registerBtn = document.getElementById(registerbtn);
-        this.loginCallback = loginCallback;
+        this.loginCallback = loginCallback; // cookie storage will call this
         this.registerCallback = registerCallback;
     }
 
