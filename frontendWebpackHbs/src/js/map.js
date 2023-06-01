@@ -1,3 +1,7 @@
+import L from 'leaflet';
+import 'leaflet-routing-machine';
+
+
 const url = "https://localhost:7777/cycleRoutes";
 
 export default class {
@@ -54,7 +58,8 @@ export default class {
             waypoints: [
                 a, b
             ],
-            router: L.Routing.mapbox('pk.eyJ1IjoiMG1hcmtoYWxlZCIsImEiOiJjbGljOXhkYWQwYnNpM2drMnpjMTJtNHg5In0.0bWI-t5_xQCSY5Kdd7upTQ'),
+            router: L.Routing.mapbox('pk.eyJ1IjoiMG1hcmtoYWxlZCIsImEiOiJjbGljOXhkYWQwYnNpM2drMnpjMTJtNHg5In0.0bWI-t5_xQCSY5Kdd7upTQ', { profile: 'mapbox/cycling' }),
+            // router: L.Routing.cycle(), //not running needs the leaflet machine plugin
             // Additional routing options if needed
         }).addTo(this.map);
         console.log(this.route);
