@@ -1,20 +1,18 @@
 /* Info page CSS */
-#info-big-container {
-    background-color: rgba(255, 255, 255, 0.315);
-    background-repeat: no-repeat;
-    background-size: contain;
+#info-master-container {
     display: flex;
     flex-direction: column;
-    height: 1200px;
-    width: auto;
+    height: auto;
+    width: 100%;
     margin-bottom: 30px;
-    margin-left: 8px;
-    margin-right: 8px;
-    margin-top: 30px;
+    margin-left: 1px;
+    left: 0;
+    margin-top: 0;
     position: relative;
 }
 
-#info-big-container::before {
+#info-master-container::before {
+    display: flex;
     content: "";
     position: absolute;
     top: 0;
@@ -23,18 +21,13 @@
     height: 100%;
     background-image: url("../img/info-background.jpg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     opacity: 1;
     z-index: -1;
     pointer-events: none;
     /* Ensure the overlay doesn't interfere with button clicks */
     transition: opacity 0.3s ease;
     /* Smooth transition effect */
-}
-
-#info-master-container.overlay::before {
-    opacity: 0.3;
-    /* Set the opacity to 30% when the overlay class is applied */
 }
 
 #info-big-container {
@@ -47,17 +40,18 @@
 #info-big-top-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     margin-left: 40px;
     margin-right: 40px;
     margin-bottom: 250px;
     margin-top: 100px;
-
+    position: relative;
 }
 
 .info-small-container {
     display: flex;
     flex-direction: column;
-
+    position: relative;
     margin-right: 60px;
     margin-left: 60px;
     align-items: center;
@@ -67,10 +61,11 @@
 #info-big-bottom-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     margin-left: 40px;
     margin-right: 40px;
     margin-bottom: 30px;
-    position: static;
+    position: relative;
 }
 
 .info-togglebtn {
@@ -79,7 +74,8 @@
     padding: 10px;
     border-radius: 20px;
     background-color: aquamarine;
-    box-shadow: 3px 8px #888888;
+    box-shadow: 6px 6px #888888;
+    position: relative;
 }
 
 .info-togglebtn:active {
@@ -102,11 +98,13 @@
     border-style: solid;
     border-radius: 10px;
     border-color: blueviolet;
-    transition: 200ms height ease-in;
+    /* transition: 200ms height ease-in; */
 }
 
 .info-wrapper.open .info-expandable {
-    display: block;
+    display: flex;
+    width: 170px;
     height: auto;
+    background-color: rgba(255, 255, 255, 0.719);
     /* Show the expandable content when .open class is applied */
 }
