@@ -36,6 +36,7 @@ let appEl = document.getElementById("app");
 
 // API url
 const apiUrl = "https://localhost:7777/api/";
+const rootUrl = "https://localhost:7777/";
 
 appEl.innerHTML = templateRoot(pages);
 
@@ -44,6 +45,14 @@ let mainEl = document.getElementById("root-main");
 let map;
 
 window.onload = async () => {
+
+	let weatherData = await fetch(rootUrl + "weather");
+	let weatherDatajson = await weatherData.json();
+
+
+	//document.getElementById("weather-container").innerHTML = `<div><span>${weatherDatajson.city}</span></div>`;
+	document.getElementById("weather-container").innerHTML = templateWeather(weatherDatajson);
+
 
 	// event handler for logout btn
 	document.getElementById("btn-logout").addEventListener('click', (ev) => {
@@ -113,7 +122,7 @@ window.onload = async () => {
 			}
 
 			if (page.name === "Weather") {
-				mainEl.innerHTML = templateWeather();
+				//	mainEl.innerHTML = templateWeather();
 			}
 
 			if (page.name === "User Page") {
