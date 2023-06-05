@@ -5,11 +5,6 @@
     align-items: center;
 }
 
-#landing-master-container {
-    background-color: #FFDE59;
-    /* border: 2px solid black; */
-}
-
 #landing-header-container h1 {
     font-size: 3rem;
     margin: 0;
