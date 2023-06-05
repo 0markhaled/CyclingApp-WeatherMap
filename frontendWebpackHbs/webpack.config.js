@@ -4,7 +4,8 @@ const path = require('path');
 const config = {
 	entry: './src/index.js',
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		// copy the path dir from backend paste after '../' to output to the static server folder
+		path: path.resolve(__dirname, '../backend-ExpressJs/public'),
 		filename: 'bundle.js',
 		// hash, ext, query, fragment, base, name, path
 		assetModuleFilename: 'img/[name][ext]'

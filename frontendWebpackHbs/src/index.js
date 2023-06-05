@@ -44,7 +44,12 @@ let mainEl = document.getElementById("root-main");
 
 let map;
 
+// check if the user is doing validation
+
+
+
 window.onload = async () => {
+
 
 	let weatherData = await fetch(rootUrl + "weather");
 	let weatherDatajson = await weatherData.json();
@@ -94,6 +99,12 @@ window.onload = async () => {
 		});
 
 	loginModule.init();
+
+
+	if (await authorization.validate()) {
+		loginModule.hideLogin(false);
+		alert("user validated");
+	}
 
 	for (let elLink of elsNavLink) {
 
