@@ -33,7 +33,15 @@
     padding-right: 40px;
     padding-top: 0px;
     padding-bottom: 0px;
-    border: 2px solid black;
+    border-radius: 5px;
+    border: 2px solid #21502C;
+    transition: 0.5s;
+    margin: 8px;
+}
+
+.navigation-li:hover {
+    background-color: rgba(255, 255, 255, 0.474);
+    color: black;
 }
 
 #bottom-nav-bar {
@@ -47,12 +55,40 @@
     background-color: #BF372A
 }
 
-#loginregister {
-    display: inline-flex;
+#login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#loginregister>p {
+#btn-login {
+    border-radius: 5px;
+    border: 2px solid #21502C;
+    background-color: #FFDE59;
+    color: #21502C;
     padding: 8px;
+    transition: 0.5s;
+}
+
+#btn-login:hover {
+    background-color: rgba(255, 255, 255, 0.474);
+    color: black;
+}
+
+#btn-logout {
+    border-radius: 5px;
+    border: 2px solid #21502C;
+    background-color: #FFDE59;
+    color: #21502C;
+    margin-top: 8px;
+    padding: 8px;
+    transition: 0.5s;
+}
+
+#btn-login:hover {
+    background-color: rgba(255, 255, 255, 0.474);
+    color: black;
 }
 
 /* Login / Register form */
@@ -94,6 +130,14 @@
     width: 40%;
     height: 100%;
     margin-left: 8px;
+}
+
+.userform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
 }
 
 /* Make this 100% of the screenview */

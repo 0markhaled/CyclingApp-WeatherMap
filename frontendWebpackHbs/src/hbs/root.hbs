@@ -10,10 +10,15 @@
 		{{/each}}
 	</ul>
 
-	<div class="loginregister">
-		<button id="btn-login">Login or Register</button>
+	<div id="login-container">
+		<div class="loginregister">
+			<button id="btn-login">Login or Register</button>
+		</div>
+		<div class="logoutbtncontainer">
+			<button id="btn-logout">Logout</button>
+		</div>
 	</div>
-	<button id="btn-logout">Logout</button>
+
 </div>
 </div>
 
@@ -27,7 +32,7 @@
 	<div id="login-dialog">
 		<div id="login-wrapper">
 			<div id="login-form">
-				<form method="post">
+				<form method="post" class="userform">
 					<p>Login:</p>
 					{{!-- change this to username, not email --}}
 					<label for="email" class="label">Username:</label>
@@ -41,7 +46,7 @@
 			</div>
 
 			<div id="register-form">
-				<form method="post">
+				<form method="post" class="userform">
 					<p>Register:</p>
 					<label for="firstname" class="label">Enter your first name:</label>
 					<input type="firstname" id="firstname" placeholder="First Name" name="firstname" required>
