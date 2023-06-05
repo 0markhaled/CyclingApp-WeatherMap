@@ -177,6 +177,7 @@
 }
 
 .lower-innertext {
+    background-color: rgba(255, 255, 255, 0.561);
     color: #21502C;
     font-size: 14pt;
     border: 2px #21502C solid;
@@ -186,7 +187,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-
+    /* Make these flippable when hovered over */
 }
 
 .lower-innertext-header {
