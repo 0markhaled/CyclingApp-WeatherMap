@@ -29,6 +29,7 @@ import templateMap from './hbs/mappage.hbs';
 import templateContact from './hbs/contact.hbs';
 import templateInfo from './hbs/info.hbs';
 import templateWeather from './hbs/weather.hbs';
+import templateAqi from './hbs/aqi.hbs';
 import templateUserpage from './hbs/userpage.hbs';
 
 // use root template, apply to "app" div
@@ -57,6 +58,11 @@ window.onload = async () => {
 
 	//document.getElementById("weather-container").innerHTML = `<div><span>${weatherDatajson.city}</span></div>`;
 	document.getElementById("weather-container").innerHTML = templateWeather(weatherDatajson);
+
+	let aqiData = await fetch(rootUrl + "weather/" + "aqi");
+	let aqiDatajson = await aqiData.json();
+
+	document.getElementById("weather-aqi-container").innerHTML = templateAqi(aqiDatajson);
 
 
 	// event handler for logout btn

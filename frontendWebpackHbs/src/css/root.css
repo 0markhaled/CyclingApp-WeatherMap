@@ -11,7 +11,7 @@
 
 #logo-container {
     position: relative;
-    left: 2%;
+    left: 0;
     width: 14%;
 }
 
@@ -40,6 +40,7 @@
 }
 
 .navigation-li:hover {
+    cursor: pointer;
     background-color: rgba(255, 255, 255, 0.474);
     color: black;
 }
@@ -47,7 +48,7 @@
 #bottom-nav-bar {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top: 2px solid black;
@@ -176,6 +177,10 @@ footer {
 
 /* Weather stuff */
 #weatherbar {
+    display: flex;
+}
+
+#aqibar {
     display: flex;
 }
 
