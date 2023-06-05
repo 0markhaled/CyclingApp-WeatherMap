@@ -1,31 +1,23 @@
 /* Root CSS */
 
 #nav-bar {
-    background-color: aqua;
+    background-color: #D96E30;
     display: flex;
     justify-content: space-evenly;
-    border: 2px black solid;
     height: 80px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-#languages {
-    border: 2px black solid;
-    position: absolute;
-    left: 10px;
-    top: 28px;
-    text-align: center;
-    background-color: blanchedalmond;
-}
-
-#logo {
+#logo-container {
     position: relative;
-    left: 4%;
-    top: 39%;
+    left: 2%;
     width: 14%;
-    height: 120%;
-    border: 2px black solid;
-    background-color: white;
-    text-align: center;
+}
+
+#logo-img {
+    border-radius: 5px;
+    height: 148px;
 }
 
 #top-root-nav {
@@ -33,7 +25,7 @@
     align-items: center;
     list-style: none;
     padding: 0;
-    border: 2px black solid;
+
 }
 
 .navigation-li {
@@ -48,49 +40,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    border: 2px black solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 2px solid black;
     padding: 0;
-    background-color: aquamarine;
+    background-color: #BF372A
 }
-
-#weather-container {
-    border: 2px solid black;
-}
-
-.weatherdd {
-    position: relative;
-    display: inline-block;
-}
-
-.weatherdd-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    text-align: center;
-    /* Center the dropdown content */
-}
-
-.weatherdd-content span {
-    color: black;
-    padding: 4px 8px;
-    /* Decreased padding for less space between lines */
-    display: block;
-}
-
-.weatherdd:hover .weatherdd-content {
-    display: block;
-}
-
-.weatherdd-content li:hover {
-    background-color: #9bd98a81;
-    color: black;
-    border-radius: 5px;
-    text-decoration: underline;
-}
-
 
 #loginregister {
     display: inline-flex;
@@ -152,7 +107,7 @@
     padding: 0;
     margin: 0px;
     border: 2px solid black;
-    background-color: rgba(255, 228, 196, 0.652);
+    background-color: rgb(255, 228, 196);
     z-index: 1;
 }
 
@@ -162,9 +117,40 @@
     right: 8px;
 }
 
+footer {
+    background-color: #BF372A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    width: 100%;
+    border: 2px #21502C solid;
+    border-radius: 5px;
+    height: 80px;
+
+}
+
+/* Weather stuff */
+#weatherbar {
+    display: flex;
+}
 
 
-/* label {
+
+/* .weatherdd-content span {
+    color: black;
+    padding: 4px 8px;
+    /* Decreased padding for less space between lines */
+/* display: block;
+}
+
+.weatherdd:hover .weatherdd-content {
     display: block;
-    margin-bottom: 10px;
+}
+
+.weatherdd-content li:hover {
+    background-color: #9bd98a81;
+    color: black;
+    border-radius: 5px;
+    text-decoration: underline;
 } */

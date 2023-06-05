@@ -1,4 +1,4 @@
-<div class="weatherdd">
+{{!-- <div class="weatherdd">
     <button class="weatherbtn">Local Weather</button>
     <div class="weatherdd-content">
         <span class="option">
@@ -22,4 +22,9 @@
             <span>{{humidity}}</span>
         </span>
     </div>
+</div> --}}
+
+<div id="weatherbar">
+    <p>{{city}}: {{feels_like_temp}} ℃,</p>
+    <p>High: {{temp_max}}, Low: {{temp_min}}, Humidex: {{humidity}}</p>
 </div>

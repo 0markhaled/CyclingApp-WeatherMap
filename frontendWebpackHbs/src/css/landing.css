@@ -3,11 +3,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
 }
 
 #landing-master-container {
-    background-color: aqua;
+    background-color: #FFDE59;
     /* border: 2px solid black; */
 }
 
@@ -29,6 +28,7 @@
     align-items: center;
     width: 100%;
     background-image: url("../img/trees.png");
+    border-radius: 5px;
 }
 
 .landing-main-inner {
@@ -40,7 +40,8 @@
 }
 
 .landing-main-inner-text {
-    border: 2px solid white;
+    border: 2px solid #21502C;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,12 +57,8 @@
     background-size: cover;
     background-position: center;
     width: 100%;
+    border-radius: 5px;
 }
-
-/* Landing sub */
-/* #landing-sub-container {
-    margin: 8px;
-} */
 
 #landing-sub-calculate {
     display: flex;
@@ -72,10 +69,14 @@
     /* border: 2px solid black; */
     background-image: url("../img/calculate.png");
     background-size: auto;
+    border: 2px solid #21502C;
+    border-radius: 5px;
     margin-top: 8px;
 }
 
 #landing-sub-weather {
+    border: 2px solid #21502C;
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -87,6 +88,8 @@
 }
 
 .landing-sub-inner {
+    border: 2px solid #21502C;
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -98,18 +101,19 @@
 }
 
 .landing-sub-inner-text {
-    border: 2px solid white;
+    border: 2px #21502C solid;
     border-radius: 5px;
+    color: #21502C;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 30%;
-    background-color: rgba(255, 255, 255, 0.452);
+    background-color: rgba(255, 255, 255, 0.789);
 }
 
 #landing-sub-photo-one {
-    border: 2px solid black;
+    border-left: #21502C 2px solid;
     background-image: url("../img/cargofamily.jpg");
     /* make the background-image show */
     background-repeat: no-repeat;
@@ -120,7 +124,7 @@
 }
 
 #landing-sub-photo-two {
-    border: 2px solid black;
+    border-left: #21502C 2px solid;
     background-image: url("../img/urbanarrowfamily.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -130,7 +134,7 @@
 }
 
 #landing-sub-photo-three {
-    border: 2px solid black;
+    border-left: #21502C 2px solid;
     background-image: url("../img/bikelaneedmonton.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -151,10 +155,11 @@
 
 /* Landing-lower stuff */
 #landing-lower-container {
-    border: 2px solid black;
+    border: 2px solid #21502C;
+    border-radius: 5px;
     height: 600px;
     width: 100%;
-    background-color: beige;
+    background-color: #FFDE59;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -165,6 +170,7 @@
 #landing-lower-header {
     font-size: 3rem;
     margin: 16px;
+    color: #21502C;
 }
 
 #landing-lower-innertext-container {
@@ -176,8 +182,10 @@
 }
 
 .lower-innertext {
+    color: #21502C;
     font-size: 14pt;
-    border: 2px black solid;
+    border: 2px #21502C solid;
+    border-radius: 5px;
     height: 300px;
     width: 300px;
     display: flex;

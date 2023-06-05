@@ -1,11 +1,8 @@
 {{!-- <header>{{siteInfo.title}}</header> --}}
 {{!-- rename to top-nav-bar later--}}
 <div id="nav-bar">
-	<div id="languages">
-		<p>FR/EN</p>
-	</div>
-	<div id="logo">
-		<p>Logo Here as img</p>
+	<div id="logo-container">
+		<img src="../img/logo.png" id="logo-img">
 	</div>
 	<ul id="top-root-nav">
 		{{#each pages}}
@@ -16,14 +13,13 @@
 	<div class="loginregister">
 		<button id="btn-login">Login or Register</button>
 	</div>
-	<div class="logoutbtncontainer">
-		<button id="btn-logout">Logout</button>
-	</div>
+	<button id="btn-logout">Logout</button>
+</div>
 </div>
 
 <div id="bottom-nav-bar">
 	<div id="weather-container">
-		<p>This is where the weather goes</p>
+		{{!-- <p>This is where the weather goes</p> --}}
 	</div>
 </div>
 
@@ -72,6 +68,12 @@
 	</div>
 </div>
 
+
+
 <main id="root-main">
 	<p>this is root</p>
 </main>
+
+<footer>
+	<p>Made by the Five Mouseketeers, Xin, Omar, Kendra, Joshua, and Dylan</p>
+</footer>
