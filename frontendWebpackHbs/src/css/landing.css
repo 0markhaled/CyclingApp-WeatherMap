@@ -1,4 +1,178 @@
 /* Landing CSS */
+#landing-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
 #landing-master-container {
-    background-color: brown;
+    background-color: aqua;
+    /* border: 2px solid black; */
+}
+
+#landing-header-container h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+#landing-header-container p {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+#landing-main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url("../img/trees.png");
+}
+
+.landing-main-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+    height: 500px;
+}
+
+.landing-main-inner-text {
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.648);
+}
+
+.landing-main-inner-photo {
+    background-image: url("../img/welcomebikepath.jpg");
+    /* make the background-image show */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+/* Landing sub */
+#landing-sub-container {
+    margin: 8px;
+}
+
+#landing-sub-calculate {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 2px solid black;
+    background-image: url("../img/sub-background-route.png");
+    background-size: cover;
+}
+
+.landing-sub-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 2px solid black;
+    background-image: url("../img/trees.png");
+}
+
+.landing-sub-inner-text {
+    border: 2px solid white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.452);
+}
+
+#landing-sub-photo-one {
+    border: 2px solid black;
+    background-image: url("../img/cargofamily.jpg");
+    /* make the background-image show */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    width: 70%;
+}
+
+#landing-sub-photo-two {
+    border: 2px solid black;
+    background-image: url("../img/urbanarrowfamily.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    width: 70%;
+}
+
+#landing-sub-photo-three {
+    border: 2px solid black;
+    background-image: url("../img/bikelaneedmonton.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    width: 70%;
+}
+
+.landing-sub-inner-photo {
+    border: 2px solid black;
+    background-image: url("../img/carbidefalls.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    width: 70%;
+}
+
+/* Landing-lower stuff */
+#landing-lower-container {
+    border: 2px solid black;
+    height: 600px;
+    width: 100%;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#landing-lower-header {
+    font-size: 3rem;
+    margin: 16px;
+}
+
+#landing-lower-innertext-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.lower-innertext {
+    font-size: 14pt;
+    border: 2px black solid;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+.lower-innertext-header {
+    font-size: 16pt;
+    text-decoration: underline;
 }
