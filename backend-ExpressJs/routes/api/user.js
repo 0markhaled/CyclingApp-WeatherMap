@@ -47,7 +47,7 @@ router.post('/register', async function (req, res, next) {
 				from: 'weijacky1978@gmail.com',
 				to: re.code.email,
 				subject: 'Hello New User ' + re.user.username,
-				text: 'Welcome! ' + re.user.username + '.\r\n Please click on this url https://localhost:7777/?code=' + re.code.code + '&uid=' + re.user.user_id
+				text: 'Welcome! ' + re.user.username + '.\r\n Please click on this url https://localhost:7777/?code=' + re.code.code + '&uid=' + re.user.user_id + ' to confirm your registration!'
 			});
 
 			res.json(re.user);
