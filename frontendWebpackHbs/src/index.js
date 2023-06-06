@@ -14,6 +14,7 @@ import mapTool from "./js/map.js";
 // Modules
 import loginregisterWindow from "./js/loginregisterWindow.js";
 import authorization from "./js/authorization.js";
+import userpageNav from "./js/userpageNav";
 // import scrollBackground from "./js/scrollbackground.js"; use this later
 
 // list of pages for nav-link
@@ -30,7 +31,7 @@ import templateContact from './hbs/contact.hbs';
 import templateInfo from './hbs/info.hbs';
 import templateWeather from './hbs/weather.hbs';
 import templateAqi from './hbs/aqi.hbs';
-import templateUserpage from './hbs/userpage.hbs';
+import templateUserpage from './hbs/userpage/userpage.hbs';
 
 // use root template, apply to "app" div
 let appEl = document.getElementById("app");
@@ -91,7 +92,7 @@ window.onload = async () => {
 			if (result.loggedIn) {
 				mainEl.innerHTML = templateUserpage(authorization.loginState);
 				authorization.saveCredentials(result.cookie, result.user.user_id);
-
+				userpageNav.userpageNav();
 			}
 		},
 		// registerCallback parameter
@@ -107,6 +108,7 @@ window.onload = async () => {
 	loginModule.init();
 
 
+	// alert for when the user is validated
 	if (await authorization.validate()) {
 		loginModule.hideLogin(false);
 		alert("user validated");
@@ -144,6 +146,7 @@ window.onload = async () => {
 
 			if (page.name === "User Page") {
 				mainEl.innerHTML = templateUserpage(authorization.loginState);
+				userpageNav.userpageNav();
 			}
 
 			else if (page.name === "Contact Us") {
