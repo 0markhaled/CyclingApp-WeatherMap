@@ -63,7 +63,7 @@ module.exports = {
 		const cookieHash = (crypto.createHash('sha256')).update(cookie).digest('base64');
 
 		// check if the user_id and cookieHash EXIST in the database
-		const result = await conn.query("select user_id,username,email from `user` where user_id = ? and cookieHash = ? and isValidated =1 ",
+		const result = await conn.query("select user_id,username,email,first,last,profile_image from `user` where user_id = ? and cookieHash = ? and isValidated =1 ",
 			[user_id, cookieHash]);
 
 		conn.end();
@@ -81,7 +81,7 @@ module.exports = {
 
 		const passHash = (crypto.createHash('sha256')).update(password).digest('base64');
 
-		const result = await conn.query("select user_id,username,email from `user` where username = ? and passHash = ? and isValidated =1",
+		const result = await conn.query("select user_id,username,email,first,last,profile_image from `user` where username = ? and passHash = ? and isValidated =1",
 			[username, passHash]);
 
 		conn.end();

@@ -8,19 +8,56 @@
     border-radius: 5px;
 }
 
-#location-header {
-    background-color: bisque;
-    border: 2px black solid;
-}
-
-#map-places {
+#mappagecolumn {
     background-color: bisque;
     border: 2px black solid;
     width: 25%;
     height: 90vh;
     border: 2px white solid;
-    overflow-y: scroll;
     background-color: white;
+}
+
+#mappage-routeinfo-name {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+#mappage-routename-area {
+    width: 250px;
+    height: 50px;
+    resize: none;
+}
+
+#mappage-routeinfo-distance {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+#mappage-routeinfo-ttcomplete {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+#mappagecolumn-nav-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+
+#mappagecolumn-nav-btns>button {
+    border: 2px black solid;
+    width: 40%;
+    height: 50px;
+    margin-top: 8px;
+    border-radius: 5px;
 }
 
 #map {

@@ -23,7 +23,7 @@ export default class {
         // /?uid=uid&ch=ch URL for local storage stuff
         let uid = localStorage.getItem("userid");
         let ch = localStorage.getItem("token");
-        console.log(uid, ch);
+        //console.log(uid, ch);
 
         if (uid != null && ch != null) {
 

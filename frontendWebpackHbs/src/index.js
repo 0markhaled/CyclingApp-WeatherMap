@@ -46,16 +46,10 @@ let mainEl = document.getElementById("root-main");
 
 let map;
 
-// check if the user is doing validation
-
-
-
 window.onload = async () => {
-
-
 	let weatherData = await fetch(rootUrl + "weather");
-	let weatherDatajson = await weatherData.json();
 
+	let weatherDatajson = await weatherData.json();
 
 	//document.getElementById("weather-container").innerHTML = `<div><span>${weatherDatajson.city}</span></div>`;
 	document.getElementById("weather-container").innerHTML = templateWeather(weatherDatajson);
@@ -92,7 +86,7 @@ window.onload = async () => {
 			if (result.loggedIn) {
 				mainEl.innerHTML = templateUserpage(authorization.loginState);
 				authorization.saveCredentials(result.cookie, result.user.user_id);
-				userpageNav.userpageNav();
+				userpageNav.userpageNav({ userinfo: authorization.loginState });
 			}
 		},
 		// registerCallback parameter
@@ -146,7 +140,7 @@ window.onload = async () => {
 
 			if (page.name === "User Page") {
 				mainEl.innerHTML = templateUserpage(authorization.loginState);
-				userpageNav.userpageNav();
+				userpageNav.userpageNav({ userinfo: authorization.loginState }); // can add more data here adding another key if wanted
 			}
 
 			else if (page.name === "Contact Us") {
