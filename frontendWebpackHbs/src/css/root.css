@@ -48,7 +48,7 @@
 #bottom-nav-bar {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top: 2px solid black;
@@ -179,10 +179,22 @@ footer {
 /* Weather stuff */
 #weatherbar {
     display: flex;
-    margin-left: 100px;
+    margin-left: 300px;
+    position: relative;
 }
 
 #aqibar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    position: relative;
+}
+
+#aqibar-index {
+    font-size: 12px;
+}
+
+#aqibar-bottom-container {
     display: flex;
 
 }

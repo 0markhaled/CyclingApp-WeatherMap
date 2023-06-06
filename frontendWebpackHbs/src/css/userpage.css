@@ -17,7 +17,8 @@
 #userpage-userthumb {
     border: black 2px solid;
     width: 100%;
-    height: 100px;
+    height: 200px;
+    position: relative;
 }
 
 #userpage-column>button {
@@ -27,6 +28,14 @@
     margin-top: 5px;
     background-color: rgba(255, 255, 255, 0.712);
     border-radius: 5px;
+    box-shadow: 5px 5px rgb(110, 109, 109);
+}
+
+#userpage-column>button:hover {
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+    box-shadow: none;
 }
 
 #userpage-info {
