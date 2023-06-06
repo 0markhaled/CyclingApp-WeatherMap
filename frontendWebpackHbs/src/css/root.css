@@ -76,6 +76,7 @@
 #btn-login:hover {
     background-color: rgba(255, 255, 255, 0.474);
     color: black;
+    cursor: pointer;
 }
 
 #btn-logout {
@@ -86,6 +87,12 @@
     margin-top: 8px;
     padding: 8px;
     transition: 0.5s;
+}
+
+#btn-logout:hover {
+    background-color: rgba(255, 255, 255, 0.474);
+    color: black;
+    cursor: pointer;
 }
 
 #btn-login:hover {
