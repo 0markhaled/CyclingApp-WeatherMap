@@ -48,7 +48,7 @@
 #bottom-nav-bar {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top: 2px solid black;
@@ -179,11 +179,12 @@ footer {
 /* Weather stuff */
 #weatherbar {
     display: flex;
-
+    margin-left: 100px;
 }
 
 #aqibar {
     display: flex;
+
 }
 
 #weathericon {
