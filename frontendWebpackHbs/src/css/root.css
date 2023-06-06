@@ -184,6 +184,12 @@ footer {
     display: flex;
 }
 
+#weathericon {
+    margin: 0;
+    padding: 0;
+    height: 75px;
+}
+
 
 
 /* .weatherdd-content span {
