@@ -17,7 +17,7 @@
 
 #logo-img {
     border-radius: 5px;
-    height: 148px;
+    height: 166px;
 }
 
 #top-root-nav {
@@ -35,14 +35,15 @@
     padding-bottom: 0px;
     border-radius: 5px;
     border: 2px solid #21502C;
-    transition: 0.5s;
+    background-color: #FFDE59;
+    transition: 1s;
     margin: 8px;
 }
 
 .navigation-li:hover {
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.474);
-    color: black;
+    background-color: #21502C;
+    color: white;
 }
 
 #bottom-nav-bar {
@@ -70,12 +71,12 @@
     background-color: #FFDE59;
     color: #21502C;
     padding: 8px;
-    transition: 0.5s;
+    transition: 1s;
 }
 
 #btn-login:hover {
-    background-color: rgba(255, 255, 255, 0.474);
-    color: black;
+    background-color: #21502C;
+    color: white;
     cursor: pointer;
 }
 
@@ -86,18 +87,13 @@
     color: #21502C;
     margin-top: 8px;
     padding: 8px;
-    transition: 0.5s;
+    transition: 1s;
 }
 
 #btn-logout:hover {
-    background-color: rgba(255, 255, 255, 0.474);
-    color: black;
+    background-color: #21502C;
+    color: white;
     cursor: pointer;
-}
-
-#btn-login:hover {
-    background-color: rgba(255, 255, 255, 0.474);
-    color: black;
 }
 
 /* Login / Register form */
