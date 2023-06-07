@@ -58,6 +58,15 @@
     height: 50px;
     margin-top: 8px;
     border-radius: 5px;
+    box-shadow: 5px 5px gainsboro;
+
+}
+
+#mappagecolumn-nav-btns>button:hover {
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+    box-shadow: none;
 }
 
 #map {

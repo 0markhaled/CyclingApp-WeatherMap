@@ -65,6 +65,7 @@ window.onload = async () => {
 		authorization.logOut();
 		// maybe add something here to make it a cleaner transition
 		mainEl.innerHTML = templateLanding();
+		alert("You have logged out!")
 	});
 
 	authorization.loginState = await authorization.storedLogin();
@@ -121,7 +122,7 @@ window.onload = async () => {
 			if (page.name === "Map") {
 				mainEl.innerHTML = templateMap({});
 				jsLocation((position) => {
-					console.log(position);
+					//console.log(position);
 					map = new mapTool("map", position);
 					// map.drawCycleRoutes();
 
