@@ -16,8 +16,7 @@
 }
 
 #userpage-userthumb {
-    border: black 2px solid;
-    width: 100%;
+    width: 90%;
     height: 150px;
     position: relative;
 }
