@@ -125,7 +125,7 @@ window.onload = async () => {
 			if (page.name === "Map") {
 				mainEl.innerHTML = templateMap({});
 				jsLocation((position) => {
-					console.log(position);
+					//console.log(position);
 					map = new mapTool("map", position);
 					// map.drawCycleRoutes();
 
