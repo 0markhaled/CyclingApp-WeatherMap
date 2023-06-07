@@ -47,7 +47,7 @@ app.use(auth);
 
 
 app.use('/api/user', userApiRouter);
-
+app.use('/api/photo', photoApiRouter);
 app.use('/', indexRouter);
 app.use('/cycleRoutes', cycleRoute);//Omar
 
