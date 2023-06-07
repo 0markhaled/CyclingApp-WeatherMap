@@ -23,7 +23,7 @@ export default class {
         // /?uid=uid&ch=ch URL for local storage stuff
         let uid = localStorage.getItem("userid");
         let ch = localStorage.getItem("token");
-        console.log(uid, ch);
+        //console.log(uid, ch);
 
         if (uid != null && ch != null) {
 
@@ -40,5 +40,36 @@ export default class {
         //     me.hideLogin();
         //     me.user = loginResultjson.user;
         // }
+    }
+
+    static exValidated = false;
+    static validated = false;
+
+    static async validate() {
+
+        if (!this.exValidated) {
+            this.exValidated = true;
+            const urlQs = new URLSearchParams(window.location.search);
+            const code = urlQs.get('code');
+            // console.log(code);
+            if (code != null) {
+                const uid = urlQs.get('uid');
+                if (uid != null) {
+                    // do a fetch back to the server side with the uid and code(emailHash)
+                    const vData = await fetch('/api/user/validate', {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ code: code, uid: uid })
+                    });
+                    const vDataJson = await vData.json();
+                    console.log(vDataJson);
+                    this.validated = vDataJson.validated;
+
+                }
+            }
+        }
+        return this.validated;
     }
 }

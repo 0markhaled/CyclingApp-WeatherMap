@@ -1,31 +1,23 @@
 /* Root CSS */
 
 #nav-bar {
-    background-color: aqua;
+    background-color: #D96E30;
     display: flex;
     justify-content: space-evenly;
-    border: 2px black solid;
     height: 80px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-#languages {
-    border: 2px black solid;
-    position: absolute;
-    left: 10px;
-    top: 28px;
-    text-align: center;
-    background-color: blanchedalmond;
-}
-
-#logo {
+#logo-container {
     position: relative;
-    left: 4%;
-    top: 39%;
+    left: 0;
     width: 14%;
-    height: 120%;
-    border: 2px black solid;
-    background-color: white;
-    text-align: center;
+}
+
+#logo-img {
+    border-radius: 5px;
+    height: 148px;
 }
 
 #top-root-nav {
@@ -33,7 +25,7 @@
     align-items: center;
     list-style: none;
     padding: 0;
-    border: 2px black solid;
+
 }
 
 .navigation-li {
@@ -41,35 +33,71 @@
     padding-right: 40px;
     padding-top: 0px;
     padding-bottom: 0px;
-    border: 2px solid black;
+    border-radius: 5px;
+    border: 2px solid #21502C;
+    transition: 0.5s;
+    margin: 8px;
+}
+
+.navigation-li:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.474);
+    color: black;
 }
 
 #bottom-nav-bar {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    border: 2px black solid;
+    /* justify-content: space-evenly; */
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 2px solid black;
     padding: 0;
-    background-color: aquamarine;
+    background-color: #BF372A
 }
 
-#weather-container {
-    border: 2px black solid;
+
+#login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-ul>li:hover {
-    background-color: #9bd98a81;
-    color: black;
+#btn-login {
     border-radius: 5px;
-    text-decoration: underline;
-}
-
-#loginregister {
-    display: inline-flex;
-}
-
-#loginregister>p {
+    border: 2px solid #21502C;
+    background-color: #FFDE59;
+    color: #21502C;
     padding: 8px;
+    transition: 0.5s;
+}
+
+#btn-login:hover {
+    background-color: rgba(255, 255, 255, 0.474);
+    color: black;
+    cursor: pointer;
+}
+
+#btn-logout {
+    border-radius: 5px;
+    border: 2px solid #21502C;
+    background-color: #FFDE59;
+    color: #21502C;
+    margin-top: 8px;
+    padding: 8px;
+    transition: 0.5s;
+}
+
+#btn-logout:hover {
+    background-color: rgba(255, 255, 255, 0.474);
+    color: black;
+    cursor: pointer;
+}
+
+#btn-login:hover {
+    background-color: rgba(255, 255, 255, 0.474);
+    color: black;
 }
 
 /* Login / Register form */
@@ -113,6 +141,14 @@ ul>li:hover {
     margin-left: 8px;
 }
 
+.userform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+}
+
 /* Make this 100% of the screenview */
 /* don't forget */
 #logindialog-background {
@@ -124,7 +160,7 @@ ul>li:hover {
     padding: 0;
     margin: 0px;
     border: 2px solid black;
-    background-color: rgba(255, 228, 196, 0.652);
+    background-color: rgb(255, 228, 196);
     z-index: 1;
 }
 
@@ -134,9 +170,64 @@ ul>li:hover {
     right: 8px;
 }
 
+footer {
+    background-color: #BF372A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    width: 100%;
+    border: 2px #21502C solid;
+    border-radius: 5px;
+    height: 80px;
+
+}
+
+/* Weather stuff */
+#weatherbar {
+    display: flex;
+    margin-left: 300px;
+    position: relative;
+}
+
+#aqibar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    position: relative;
+}
+
+#aqibar-index {
+    font-size: 12px;
+}
+
+#aqibar-bottom-container {
+    display: flex;
+
+}
+
+#weathericon {
+    margin: 0;
+    padding: 0;
+    height: 75px;
+}
 
 
-/* label {
+
+/* .weatherdd-content span {
+    color: black;
+    padding: 4px 8px;
+    /* Decreased padding for less space between lines */
+/* display: block;
+}
+
+.weatherdd:hover .weatherdd-content {
     display: block;
-    margin-bottom: 10px;
+}
+
+.weatherdd-content li:hover {
+    background-color: #9bd98a81;
+    color: black;
+    border-radius: 5px;
+    text-decoration: underline;
 } */

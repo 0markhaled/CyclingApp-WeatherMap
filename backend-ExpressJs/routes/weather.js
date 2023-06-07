@@ -13,8 +13,8 @@ router.get('/', async function (req, res, next) {
     let out = {
         "city": fetch.name,
         "country": fetch.sys.country,
-        "wDescriptions": fetch.weather.description,
-        "wIcon": fetch.weather.icon,
+        "wDescriptions": fetch.weather[0].main,
+        "wIcon": fetch.weather[0].icon,
         "temp_min": fetch.main.temp_min,
         "temp_max": fetch.main.temp_max,
         "humidity": fetch.main.humidity,
@@ -35,7 +35,7 @@ router.get('/aqi', async function (req, res, next) {
         // "no2": fetch.list[0].components.no2,
         // "o3": fetch.list[0].components.o3,
         // "so2": fetch.list[0].components.so2,
-        "pm2.5": fetch.list[0].components.pm2_5,
+        "pm2_5": fetch.list[0].components.pm2_5,
         "pm10": fetch.list[0].components.pm10,
         // "nh3": fetch.list[0].components.nh3
     };

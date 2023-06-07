@@ -1,4 +1,196 @@
 /* Landing CSS */
-#landing-master-container {
-    background-color: brown;
+#landing-header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#landing-header-container h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+#landing-header-container p {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+#landing-main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url("../img/trees.png");
+    border-radius: 5px;
+}
+
+.landing-main-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+    height: 500px;
+}
+
+.landing-main-inner-text {
+    border: 2px solid #21502C;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.648);
+}
+
+.landing-main-inner-photo {
+    background-image: url("../img/welcomebikepath.jpg");
+    /* make the background-image show */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#landing-sub-calculate {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* border: 2px solid black; */
+    background-image: url("../img/calculate.png");
+    background-size: auto;
+    border: 2px solid #21502C;
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+#landing-sub-weather {
+    border: 2px solid #21502C;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url("../img/weatherwidget.png");
+    background-size: contain;
+    margin-top: 8px;
+}
+
+.landing-sub-inner {
+    border: 2px solid #21502C;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 8px;
+    /* border: 2px solid black; */
+    background-image: url("../img/trees.png");
+}
+
+.landing-sub-inner-text {
+    border: 2px #21502C solid;
+    border-radius: 5px;
+    color: #21502C;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.789);
+}
+
+#landing-sub-photo-one {
+    border-left: #21502C 2px solid;
+    background-image: url("../img/cargofamily.jpg");
+    /* make the background-image show */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    width: 70%;
+}
+
+#landing-sub-photo-two {
+    border-left: #21502C 2px solid;
+    background-image: url("../img/urbanarrowfamily.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    width: 70%;
+}
+
+#landing-sub-photo-three {
+    border-left: #21502C 2px solid;
+    background-image: url("../img/bikelaneedmonton.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    width: 70%;
+}
+
+.landing-sub-inner-photo {
+    border: 2px solid black;
+    background-image: url("../img/carbidefalls.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    width: 70%;
+}
+
+/* Landing-lower stuff */
+#landing-lower-container {
+    border: 2px solid #21502C;
+    border-radius: 5px;
+    height: 600px;
+    width: 100%;
+    background-color: #FFDE59;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
+#landing-lower-header {
+    font-size: 3rem;
+    margin: 16px;
+    color: #21502C;
+}
+
+#landing-lower-innertext-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.lower-innertext {
+    background-color: rgba(255, 255, 255, 0.561);
+    color: #21502C;
+    font-size: 14pt;
+    border: 2px #21502C solid;
+    border-radius: 5px;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* Make these flippable when hovered over */
+}
+
+.lower-innertext-header {
+    font-size: 16pt;
+    text-decoration: underline;
 }

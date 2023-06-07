@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const user = require('../../models/user');
 const cors = require('cors');
+const nodeMailer = require('nodemailer');
 
 router.use(cors());
 // if user is logged in:
@@ -32,6 +33,23 @@ router.post('/register', async function (req, res, next) {
 		let re = await user.addUser(req.body.userUsername, req.body.userEmail, req.body.registerPassword, req.body.userLast, req.body.userFirst, "req.body.profile_image");
 
 		if (re && re.affectedRows == 1) {
+			// console.log(re.code);
+			// we send an email when a new user registered
+			const emailer = nodeMailer.createTransport({
+				service: 'gmail',
+				auth: {
+					user: 'weijacky1978@gmail.com',
+					pass: 'myhhrrycamjzvysv'
+				}
+			});
+
+			const result = await emailer.sendMail({
+				from: 'weijacky1978@gmail.com',
+				to: re.code.email,
+				subject: 'Hello New User ' + re.user.username,
+				text: 'Welcome! ' + re.user.username + '.\r\n Please click on this url https://localhost:7777/?code=' + re.code.code + '&uid=' + re.user.user_id + ' to confirm your registration!'
+			});
+
 			res.json(re.user);
 		} else {
 			res.json({ "message": "Could not register" });
@@ -39,4 +57,12 @@ router.post('/register', async function (req, res, next) {
 	}
 });
 
+
+router.post('/validate', async function (req, res) {
+	if (req.body.code != undefined && req.body.code != null) {
+		console.log(req.body.code, req.body.uid);
+		const result = await user.validateUser(req.body.uid, req.body.code);
+		res.json(result);
+	}
+});
 module.exports = router;

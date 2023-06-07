@@ -14,6 +14,7 @@ import mapTool from "./js/map.js";
 // Modules
 import loginregisterWindow from "./js/loginregisterWindow.js";
 import authorization from "./js/authorization.js";
+import userpageNav from "./js/userpageNav";
 // import scrollBackground from "./js/scrollbackground.js"; use this later
 
 // list of pages for nav-link
@@ -29,13 +30,15 @@ import templateMap from './hbs/mappage.hbs';
 import templateContact from './hbs/contact.hbs';
 import templateInfo from './hbs/info.hbs';
 import templateWeather from './hbs/weather.hbs';
-import templateUserpage from './hbs/userpage.hbs';
+import templateAqi from './hbs/aqi.hbs';
+import templateUserpage from './hbs/userpage/userpage.hbs';
 
 // use root template, apply to "app" div
 let appEl = document.getElementById("app");
 
 // API url
 const apiUrl = "https://localhost:7777/api/";
+const rootUrl = "https://localhost:7777/";
 
 appEl.innerHTML = templateRoot(pages);
 
@@ -44,12 +47,25 @@ let mainEl = document.getElementById("root-main");
 let map;
 
 window.onload = async () => {
+	let weatherData = await fetch(rootUrl + "weather");
+
+	let weatherDatajson = await weatherData.json();
+
+	//document.getElementById("weather-container").innerHTML = `<div><span>${weatherDatajson.city}</span></div>`;
+	document.getElementById("weather-container").innerHTML = templateWeather(weatherDatajson);
+
+	let aqiData = await fetch(rootUrl + "weather/" + "aqi");
+	let aqiDatajson = await aqiData.json();
+
+	document.getElementById("weather-aqi-container").innerHTML = templateAqi(aqiDatajson);
+
 
 	// event handler for logout btn
 	document.getElementById("btn-logout").addEventListener('click', (ev) => {
 		authorization.logOut();
 		// maybe add something here to make it a cleaner transition
 		mainEl.innerHTML = templateLanding();
+		alert("You have logged out!")
 	});
 
 	authorization.loginState = await authorization.storedLogin();
@@ -71,7 +87,7 @@ window.onload = async () => {
 			if (result.loggedIn) {
 				mainEl.innerHTML = templateUserpage(authorization.loginState);
 				authorization.saveCredentials(result.cookie, result.user.user_id);
-
+				userpageNav.userpageNav({ userinfo: authorization.loginState });
 			}
 		},
 		// registerCallback parameter
@@ -85,6 +101,13 @@ window.onload = async () => {
 		});
 
 	loginModule.init();
+
+
+	// alert for when the user is validated
+	if (await authorization.validate()) {
+		loginModule.hideLogin(false);
+		alert("user validated");
+	}
 
 	for (let elLink of elsNavLink) {
 
@@ -113,11 +136,12 @@ window.onload = async () => {
 			}
 
 			if (page.name === "Weather") {
-				mainEl.innerHTML = templateWeather();
+				//	mainEl.innerHTML = templateWeather();
 			}
 
 			if (page.name === "User Page") {
 				mainEl.innerHTML = templateUserpage(authorization.loginState);
+				userpageNav.userpageNav({ userinfo: authorization.loginState }); // can add more data here adding another key if wanted
 			}
 
 			else if (page.name === "Contact Us") {

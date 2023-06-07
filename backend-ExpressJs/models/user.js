@@ -8,23 +8,41 @@ module.exports = {
 		conn.end();
 		return result.length > 0;
 	},
+
+	'validateUser': async function (user_id, user_emailHash) {
+		let conn = await db.getConnection();
+		const result = await conn.query("select user_id from user where emailHash = ? and user_id = ?", [user_emailHash, user_id]);
+		conn.end();
+		if (result.length > 0) {
+			conn = await db.getConnection();
+			const result = await conn.query("update user set isValidated = 1,emailHash = null where user_id = ?", [user_id]);
+			conn.end();
+			return { 'validated': true }
+		};
+		return { 'validated': false };
+	},
 	'addUser': async function (username, email, password, last, first, profile_image) {
 		console.log(username, email, password, last, first);
 		if (username != null && email != null && password != null) {
 			if (!await this.isUser(username)) {
 				let conn = await db.getConnection();
 
-				// hash the password 
+
 				// (sha256 "hasher")
 				// update generates a hash "object"
 				// digest outputs it to a value
+
+				// random code for email validation
+				const emailHash = (crypto.createHash('sha256')).update("" + Math.random()).digest('base64');
+
+				// hash the password 
 				const passHash = (crypto.createHash('sha256')).update(password).digest('base64');
 
-				const result = await conn.query("insert into user (username, email, passHash, last, first, profile_image) values (?,?,?,?,?,?)", [username, email, passHash, last, first, profile_image]);
+				const result = await conn.query("insert into user (username, email, passHash, last, first, profile_image, emailHash) values (?,?,?,?,?,?,?)", [username, email, passHash, last, first, profile_image, emailHash]);
 				conn.end();
 
-				result.user = { username: username, email: email, user_id: Number(result.insertId), last: last, first: first, profile_image: profile_image };
-
+				result.user = { username: username, email: email, user_id: Number(result.insertId), last: last, first: first, profile_image: profile_image, emailHash };
+				result.code = { code: emailHash, email: email };
 				return result;
 			} else {
 				return false;
@@ -45,7 +63,7 @@ module.exports = {
 		const cookieHash = (crypto.createHash('sha256')).update(cookie).digest('base64');
 
 		// check if the user_id and cookieHash EXIST in the database
-		const result = await conn.query("select user_id,username,email from `user` where user_id = ? and cookieHash = ? ",
+		const result = await conn.query("select user_id,username,email,first,last,profile_image from `user` where user_id = ? and cookieHash = ? and isValidated =1 ",
 			[user_id, cookieHash]);
 
 		conn.end();
@@ -63,7 +81,7 @@ module.exports = {
 
 		const passHash = (crypto.createHash('sha256')).update(password).digest('base64');
 
-		const result = await conn.query("select user_id,username,email from `user` where username = ? and passHash = ? ",
+		const result = await conn.query("select user_id,username,email,first,last,profile_image from `user` where username = ? and passHash = ? and isValidated =1",
 			[username, passHash]);
 
 		conn.end();
