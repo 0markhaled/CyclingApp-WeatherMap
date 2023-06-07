@@ -23,6 +23,9 @@ import pages from './js/json/pages.js';
 //import toggle feature in info page
 import toggle from "./js/info";
 
+//impport user image show feature in user page
+import userImageShow from "./js/userPage"
+
 // templates
 import templateRoot from './hbs/root.hbs';
 import templateLanding from './hbs/landing.hbs';

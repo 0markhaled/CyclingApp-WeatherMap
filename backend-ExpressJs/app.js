@@ -17,7 +17,7 @@ const weatherRouter = require('./routes/weather');
 
 
 const userApiRouter = require("./routes/api/user");
-
+const photoApiRouter = require("./routes/api/photo");
 
 const app = express();
 
@@ -46,7 +46,7 @@ app.use(auth);
 
 
 app.use('/api/user', userApiRouter);
-
+app.use('/api/photo', photoApiRouter);
 app.use('/', indexRouter);
 app.use('/cycleRoutes', cycleRoute);//Omar
 
