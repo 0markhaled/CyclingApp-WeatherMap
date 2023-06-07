@@ -113,5 +113,32 @@ module.exports = {
 		}
 
 		return { loggedIn: false };
+	},
+
+	'addPhoto': async function (image_filename, user) {
+		if (user.loggedIn) {
+			let conn = await db.getConnection();
+			const result = await conn.query(
+				"update `user` set profile_image =? where user_id = ?",
+				[image_filename, user.user.user_id]);
+
+			conn.end();
+			return result;
+		}
+		return { loggedIn: false };
+	},
+
+	'deletePhoto': async function (user) {
+		if (user.loggedIn) {
+			let conn = await db.getConnection();
+			const result = await conn.query(
+				"update `user` set profile_image = null where user_id = ?",
+				[user.user.user_id]);
+
+			conn.end();
+			return result;
+		}
+		return { loggedIn: false };
 	}
+
 };

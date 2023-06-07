@@ -1,13 +1,22 @@
 <div id="userpageSettings-container">
     <p>Welcome, {{userinfo.user.first}}</p>
-    <button id="btn-upload-image">Profile Image Upload</button>
+
 </div>
 
 <div>
-    <img id="userpageSettings-profileimage" src="{{userinfo.user.profile_image}}">
+    <img id="userpageSettings-profileimage" src="/img/{{userinfo.user.profile_image}}">
     <p>User Information:</p>
     <p>First name: {{userinfo.user.first}}</p>
     <p>Last name: {{userinfo.user.last}}</p>
     <p>Username: {{userinfo.user.username}}</p>
     <p>Email: {{userinfo.user.email}}</p>
+</div>
+
+<div>
+    <form>
+        <input type="file" name="photo" id="photo">
+
+
+    </form>
+    <button id="btn-user-edit">Edit</button>
 </div>
