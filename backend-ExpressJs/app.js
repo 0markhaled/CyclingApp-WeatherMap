@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+
 const logger = require('morgan');
 const db = require("./modules/db");
 const auth = require("./modules/auth");
@@ -17,7 +18,7 @@ const weatherRouter = require('./routes/weather');
 
 
 const userApiRouter = require("./routes/api/user");
-//const photoApiRouter = require("./routes/api/photo");
+
 
 const app = express();
 
@@ -46,7 +47,7 @@ app.use(auth);
 
 
 app.use('/api/user', userApiRouter);
-//app.use('/api/photo', photoApiRouter);
+app.use('/api/photo', photoApiRouter);
 app.use('/', indexRouter);
 app.use('/cycleRoutes', cycleRoute);//Omar
 
