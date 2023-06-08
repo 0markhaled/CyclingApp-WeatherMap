@@ -69,7 +69,16 @@ p {
 #usersetting-profile {
     display: flex;
     flex-flow: column wrap;
+
     position: relative;
+}
+
+#usersetting-profile-container {
+    background-image: url("../img/usersetting.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: 98%;
+
 }
 
 #userpageSettings-profileimage {
@@ -87,16 +96,23 @@ input {
     width: 400px;
 }
 
-.new {
-    font-size: 16px;
+.user-settingpage,
+.user-settingpage-data {
     font-style: italic;
 }
 
-#btn-userfirst-edit,
-#btn-userlast-edit,
-#btn-username-edit,
-#btn-useremail-edit,
+.user-settingpage-data {
+    font-size: 14px;
+}
+
+.new {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.user-edit,
 #btn-user-edit {
+    margin-top: 10px;
     width: 50px;
     background-color: #FFDE59;
     border-radius: 3px 3px;
@@ -114,6 +130,17 @@ input {
     box-shadow: none;
 }
 
+#btn-user-edit {
+    position: relative;
+    margin-left: 0px;
+}
+
 #profile-image {
-    margin-top: 20px;
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 10px;
+}
+
+#photo {
+    margin-top: 10px;
 }
