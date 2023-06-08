@@ -1,22 +1,38 @@
 <div id="userpageSettings-container">
-    <p>Welcome, {{userinfo.user.first}}</p>
+    <p>Welcome, {{userinfo.user.first}}!</p>
+    <div id="usersetting-profile">
 
-</div>
-
-<div>
-    <img id="userpageSettings-profileimage" src="/img/{{userinfo.user.profile_image}}">
-    <p>User Information:</p>
-    <p>First name: {{userinfo.user.first}}</p>
-    <p>Last name: {{userinfo.user.last}}</p>
-    <p>Username: {{userinfo.user.username}}</p>
-    <p>Email: {{userinfo.user.email}}</p>
-</div>
-
-<div>
-    <form>
+        <p>User Information:</p>
+        <div class="user-info">
+            <span>First name: {{userinfo.user.first}}</span>
+            <label for="first" class="new">New first name: </label>
+            <input type="text" name="first" id="first" value="{{userinfo.user.first}}">
+            <button class="user-edit" data-field="first" id="btn-userfirst-edit">Edit</button>
+        </div>
+        <div class="user-info">
+            <span>Last name: {{userinfo.user.last}}</span>
+            <label for="last" class="new">New last name: </label>
+            <input type="text" name="last" id="last" value="{{userinfo.user.last}}">
+            <button class="user-edit" data-field="last" id="btn-userlast-edit">Edit</button>
+        </div>
+        <div class="user-info">
+            <span>Username: {{userinfo.user.username}}</span>
+            <label for="username1" class="new">New username: </label>
+            <input type="text" name="username1" id="username1" value="{{userinfo.user.username}}">
+            <button class="user-edit" data-field="username1" id="btn-username-edit">Edit</button>
+        </div>
+        <div class="user-info">
+            <span>Email: {{userinfo.user.email}}</span>
+            <label for="email1" class="new">New email address: </label>
+            <input type="text" name="email1" id="email1" value="{{userinfo.user.email}}">
+            <button class="user-edit" data-field="email1" id="btn-useremail-edit">Edit</button>
+        </div>
+    </div>
+    <div id="profile-image">
+        <label for="photo" id="new-profileimage">Profile Image Edit</label>
+        <img id="userpageSettings-profileimage" src="/img/{{userinfo.user.profile_image}}">
         <input type="file" name="photo" id="photo">
+        <button id="btn-user-edit">Edit</button>
+    </div>
 
-
-    </form>
-    <button id="btn-user-edit">Edit</button>
 </div>

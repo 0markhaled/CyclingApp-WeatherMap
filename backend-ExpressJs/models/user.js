@@ -139,6 +139,33 @@ module.exports = {
 			return result;
 		}
 		return { loggedIn: false };
-	}
+	},
 
+	'editInfo': async function (user, field, value) {
+		console.log('res', user, field, value);
+		if (user.loggedIn) {
+			field = field.toLowerCase();
+			const fields = ['first', 'last', 'username1', 'email1'];
+
+			if (fields.includes(field)) {
+				if (field === 'username1') {
+					field = 'username';
+				} else if (field === 'email1') {
+					field = 'email';
+				}
+				let conn = await db.getConnection();
+
+				const result = await conn.query(
+					"update `user` set `" + field + "` = ?  where user_id = ?",
+					[value, user.user.user_id]);
+
+				conn.end();
+
+				return result;
+			}
+
+			return { message: 'invalid field ' + field };
+		}
+		return { loggedIn: false };
+	}
 };
