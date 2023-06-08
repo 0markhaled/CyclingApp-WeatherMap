@@ -5,6 +5,8 @@ dist/*
 !dist/index.html
 node_modules/
 *.log
+public/bundle.js
+
 certs/*
  
 # OS generated files

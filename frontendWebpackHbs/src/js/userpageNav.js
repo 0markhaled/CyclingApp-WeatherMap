@@ -32,7 +32,7 @@ export default class {
 
         userpageSettings.addEventListener("click", function () {
             userpageContainer.innerHTML = userpageSettingstemplate(data);
-            let btnUseredit = document.getElementById('btn-user-edit');
+            let btnUseredit = document.getElementById('btn-user-upload');
             let photoFileEl = document.getElementById('photo');
             btnUseredit.addEventListener('click', async () => {
                 const photoFile = photoFileEl.files[0];

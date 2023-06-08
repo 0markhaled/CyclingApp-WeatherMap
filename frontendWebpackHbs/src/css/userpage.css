@@ -16,8 +16,7 @@
 }
 
 #userpage-userthumb {
-    border: black 2px solid;
-    width: 100%;
+    width: 90%;
     height: 150px;
     position: relative;
 }
@@ -55,4 +54,9 @@
 #user-route {
     text-align: center;
     vertical-align: middle;
+}
+
+#userpageSettings-profileimage {
+    width: 250px;
+    height: 250px;
 }
