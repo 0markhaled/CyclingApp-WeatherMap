@@ -28,6 +28,7 @@
 	"dependencies": {
 		"@tomtom-international/web-sdk-maps": "^6.23.0",
 		"leaflet": "^1.9.4",
-		"leaflet-routing-machine": "^3.2.12"
+		"leaflet-routing-machine": "^3.2.12",
+		"mariadb": "^3.1.2"
 	}
 }

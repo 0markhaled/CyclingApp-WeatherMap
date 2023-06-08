@@ -1,6 +1,7 @@
 import L from 'leaflet';
 import 'leaflet-routing-machine';
 
+import mariadb from 'mariadb';
 
 const url = "https://localhost:7777/cycleRoutes";
 
@@ -8,6 +9,10 @@ export default class {
 
     routeDistance;
     routeTime;
+    routeName;
+
+
+
     constructor(container, position) {
         this.position = L.latLng(position.latitude, position.longitude);
         this.container = container;
@@ -27,94 +32,87 @@ export default class {
 
     }
 
-
-
-
-
-
-
     drawCycleRoute = async (a, b) => {
-
-
 
         if (this.route !== null) {
             this.map.removeControl(this.route);
         }
 
         let r = L.Routing.control({
-            waypoints: [
-                a, b
-            ],
-            router: L.Routing.mapbox('pk.eyJ1IjoiMG1hcmtoYWxlZCIsImEiOiJjbGljOXhkYWQwYnNpM2drMnpjMTJtNHg5In0.0bWI-t5_xQCSY5Kdd7upTQ', { profile: 'mapbox/cycling' }),
+            waypoints: [a, b],
+            router: L.Routing.mapbox('pk.eyJ1IjoiMG1hcmtoYWxlZCIsImEiOiJjbGljOXhkYWQwYnNpM2drMnpjMTJtNHg5In0.0bWI-t5_xQCSY5Kdd7upTQ',
+                { profile: 'mapbox/cycling' }),
 
 
         }).addTo(this.map);
-        // this.route = r;
-
+        this.route = r;
 
         this.route.on('routeselected', (e) => {
 
             console.log(e.route.summary);
 
-            routeDistnace = e.route.summary.totalDistance;
-            routeTime = e.route.summary.totalTime;
+            this.routeDistance = e.route.summary.totalDistance;
+            this.routeTime = e.route.summary.totalTime;
+
+            let routeHours = Math.floor(this.routeTime / 3600);
+            let routeMinutes = Math.floor((this.routeTime % 3600) / 60);
+            let formattedTime = routeHours + ' hours ' + routeMinutes + ' minutes';
+
+            let distanceTextbox = document.getElementById("mappage-distance-label");
+            let timeTextbox = document.getElementById("mappage-ttcomplete-label");
+
+            distanceTextbox.innerHTML = (this.routeDistance / 1000).toFixed(1) + " km";
+            timeTextbox.innerHTML = formattedTime;
+
+        });
+    }
+
+
+    saveRoute = () => {
+
+        routeName = document.getElementById('mappage-routename-area').value;
+        const insertRoute = "INSERT INTO route (distance, name, duration) VALUES (?, ?, ?)";
+        let btnSaveRoute = document.getElementById("save-btn");
+
+
+        saveButton.addEventListener('click', () => {
+            const routeQuery = "INSERT INTO route (distance, name, duration) VALUES (?, ?, ?)";
+            pool.getConnection()
+                .then(conn => {
+                    conn.query(routeQuery, [routeDistance, routeName, routeTime])
+                        .then(() => {
+                            console.log('Values inserted successfully.');
+                            conn.end();
+                        })
+                        .catch(err => {
+                            console.error('Error occurred during query execution:', err);
+                            conn.end();
+                        });
+                })
+                .catch(err => {
+                    console.error('Error occurred while connecting to the database:', err);
+                });
         });
 
-
-        let trial = document.getElementsByClassName("leaflet-routing-alt ").length;
-        console.log(trial);
+    };
 
 
-        // console.log(obj.getSelectedRoute());
-        //console.log(r['_selectedRoute']);
+    clearRoute = () => {
 
-        // console.log(Object.getOwnPropertyNames(this.route));
+        let btnClearRoute = document.getElementById("clear-btn");
+        clearButton.addEventListener('click', () => {
+            document.getElementById('mappage-routename-area').value = "";
+            document.getElementById('mappage-distance-label').innerHTML = "";
+            document.getElementById('mappage-ttcomplete-label').innerHTML = "";
 
+            if (this.route !== null) {
+                this.map.removeControl(this.route);
+            }
+
+        });
 
 
 
 
     }
-
-    // HighlightBikePaths() {
-
-    //     var bikePathsLayer = L.geoJson(null, {
-    //         style: {
-    //             color: '#FF0000', // Set the color of the bike paths
-    //             weight: 3 // Set the width of the bike paths
-    //         }
-    //     }).addTo(this.map);
-
-    //     // Assume 'response' is the routing response received from Mapbox Cycle Routing Engine
-
-    //     // Extract the bike paths from the response
-    //     var bikePaths = response.routes[0].geometry.coordinates;
-
-    //     // Convert the bike paths to GeoJSON
-    //     var bikePathsGeoJSON = {
-    //         type: 'Feature',
-    //         properties: {},
-    //         geometry: {
-    //             type: 'LineString',
-    //             coordinates: bikePaths
-    //         }
-    //     };
-
-    //     // Add the bike paths to the 'bikePathsLayer'
-    //     bikePathsLayer.addData(bikePathsGeoJSON);
-    //     var roadStyle = {
-    //         color: '#000000', // Set the color of the roads
-    //         weight: 2 // Set the width of the roads
-    //     };
-
-    //     // Create a new layer for roads
-    //     var roadsLayer = L.geoJson(null, {
-    //         style: roadStyle
-    //     }).addTo(this.map);
-    // }
-
-
-
-
-
 }

@@ -63,3 +63,4 @@ typings/
 mailhog
 certs/*
 config/dbConfig.js
+bundle.js
