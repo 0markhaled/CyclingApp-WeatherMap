@@ -77,13 +77,17 @@ p {
     height: auto;
 }
 
-#user-info {
+.user-info {
     display: flex;
     flex-direction: column;
 
 }
 
-#new {
+input {
+    width: 400px;
+}
+
+.new {
     font-size: 16px;
     font-style: italic;
 }
