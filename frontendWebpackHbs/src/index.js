@@ -129,48 +129,49 @@ window.onload = async () => {
 	}
 
 	for (let elLink of elsNavLink) {
-
 		elLink.addEventListener('click', function () {
 			let page = { name: this.dataset.link };
 
-			// if Home is clicked on it shows the home page and fetches the stuff from the json file
-			if (page.name === "Home") {
-				mainEl.innerHTML = templateLanding();
-			}
+			switch (page.name) {
+				case "Home":
+					mainEl.innerHTML = templateLanding();
+					break;
 
-			if (page.name === "Map") {
-				mainEl.innerHTML = templateMap({});
-				jsLocation((position) => {
-					//console.log(position);
-					map = new mapTool("map", position);
-					// map.drawCycleRoutes();
+				case "Map":
+					mainEl.innerHTML = templateMap({});
+					jsLocation((position) => {
+						//console.log(position);
+						map = new mapTool("map", position);
+						// map.drawCycleRoutes();
+					});
+					break;
 
-				});
-			}
+				case "Info":
+					mainEl.innerHTML = templateInfo();
+					toggle();
+					// scrollBackground();
+					break;
 
-			if (page.name === "Info") {
-				mainEl.innerHTML = templateInfo();
-				toggle();
-				// scrollBackground();
-			}
+				case "Weather":
+					// mainEl.innerHTML = templateWeather();
+					break;
 
-			if (page.name === "Weather") {
-				//	mainEl.innerHTML = templateWeather();
-			}
+				case "User Page":
+					if (authorization.loginState.loggedIn) {
+						mainEl.innerHTML = templateUserpage(authorization.loginState);
+						userpageNav.userpageNav({ userinfo: authorization.loginState }); // can add more data here adding another key if wanted
+					}
 
-			if (page.name === "User Page") {
-				if (result.loggedIn) {
-					mainEl.innerHTML = templateUserpage(authorization.loginState);
-					userpageNav.userpageNav({ userinfo: authorization.loginState }); // can add more data here adding another key if wanted
-				}
+					mainEl.innerHTML = '<span id="userpage-logOut-content">Please login to see your profile!</span>';
+					break;
 
-			}
-
-			else if (page.name === "Contact Us") {
-				mainEl.innerHTML = templateContact();
+				case "Contact Us":
+					mainEl.innerHTML = templateContact();
+					break;
 			}
 		});
 	}
+
 };
 
 // Person handling weather can use this later

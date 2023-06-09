@@ -7,6 +7,13 @@
     border-radius: 5px;
 }
 
+#userpage-logOut-content {
+    margin-left: 30vw;
+    font-size: 32px;
+    font-style: italic;
+    position: relative;
+}
+
 #userpage-column {
     display: flex;
     flex-direction: column;
