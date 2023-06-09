@@ -47,6 +47,7 @@ let mainEl = document.getElementById("root-main");
 let map;
 
 window.onload = async () => {
+
 	let weatherData = await fetch(rootUrl + "weather");
 
 	let weatherDatajson = await weatherData.json();
@@ -91,9 +92,11 @@ window.onload = async () => {
 				userpageNav.userpageNav({ userinfo: authorization.loginState });
 				document.getElementById('btn-login').style.display = 'none';
 				document.getElementById('btn-logout').style.display = 'block';
+
 			} else {
 				document.getElementById('btn-login').style.display = 'block';
 				document.getElementById('btn-logout').style.display = 'none';
+
 			}
 		},
 		// registerCallback parameter
@@ -156,8 +159,11 @@ window.onload = async () => {
 			}
 
 			if (page.name === "User Page") {
-				mainEl.innerHTML = templateUserpage(authorization.loginState);
-				userpageNav.userpageNav({ userinfo: authorization.loginState }); // can add more data here adding another key if wanted
+				if (result.loggedIn) {
+					mainEl.innerHTML = templateUserpage(authorization.loginState);
+					userpageNav.userpageNav({ userinfo: authorization.loginState }); // can add more data here adding another key if wanted
+				}
+
 			}
 
 			else if (page.name === "Contact Us") {
