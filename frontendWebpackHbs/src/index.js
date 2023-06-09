@@ -160,9 +160,9 @@ window.onload = async () => {
 					if (authorization.loginState.loggedIn) {
 						mainEl.innerHTML = templateUserpage(authorization.loginState);
 						userpageNav.userpageNav({ userinfo: authorization.loginState }); // can add more data here adding another key if wanted
+					} else {
+						mainEl.innerHTML = '<div id="userpage-logOut-content">Please login to see your profile!</div>';
 					}
-
-					mainEl.innerHTML = '<span id="userpage-logOut-content">Please login to see your profile!</span>';
 					break;
 
 				case "Contact Us":

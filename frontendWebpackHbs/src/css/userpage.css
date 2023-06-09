@@ -8,10 +8,11 @@
 }
 
 #userpage-logOut-content {
-    margin-left: 30vw;
+    display: flex;
+    justify-content: center;
+    padding: 200px;
     font-size: 32px;
     font-style: italic;
-    position: relative;
 }
 
 #userpage-column {
