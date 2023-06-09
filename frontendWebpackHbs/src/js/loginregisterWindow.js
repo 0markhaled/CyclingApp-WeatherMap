@@ -102,6 +102,8 @@ export default class {
                 me.hideLogin();
                 me.user = loginResultjson.user;
             }
+            alert("Wrong username or password input，please try it again!");
+
 
             me.loggedIn = loginResultjson.loggedIn;
 

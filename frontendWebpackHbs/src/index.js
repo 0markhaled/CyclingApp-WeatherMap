@@ -66,6 +66,8 @@ window.onload = async () => {
 		// maybe add something here to make it a cleaner transition
 		mainEl.innerHTML = templateLanding();
 		alert("You have logged out!")
+		document.getElementById('btn-login').style.display = 'block';
+		document.getElementById('btn-logout').style.display = 'none';
 	});
 
 	authorization.loginState = await authorization.storedLogin();
@@ -83,11 +85,15 @@ window.onload = async () => {
 		"registersubmit",
 		(result) => {
 			authorization.loginState = result;
-
 			if (result.loggedIn) {
 				mainEl.innerHTML = templateUserpage(authorization.loginState);
 				authorization.saveCredentials(result.cookie, result.user.user_id);
 				userpageNav.userpageNav({ userinfo: authorization.loginState });
+				document.getElementById('btn-login').style.display = 'none';
+				document.getElementById('btn-logout').style.display = 'block';
+			} else {
+				document.getElementById('btn-login').style.display = 'block';
+				document.getElementById('btn-logout').style.display = 'none';
 			}
 		},
 		// registerCallback parameter
@@ -102,6 +108,16 @@ window.onload = async () => {
 
 	loginModule.init();
 
+	// Hide or show login/logout buttons based on login state
+	if (await authorization.validate()) {
+		loginModule.hideLogin(false);
+		document.getElementById('btn-login').style.display = 'none';
+		document.getElementById('btn-logout').style.display = 'block';
+		alert("user validated");
+	} else {
+		document.getElementById('btn-login').style.display = 'block';
+		document.getElementById('btn-logout').style.display = 'none';
+	}
 
 	// alert for when the user is validated
 	if (await authorization.validate()) {
