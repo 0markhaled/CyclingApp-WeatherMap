@@ -68,7 +68,6 @@ window.onload = async () => {
 		alert("You have logged out!")
 		document.getElementById('btn-login').style.display = 'block';
 		document.getElementById('btn-logout').style.display = 'none';
-
 	});
 
 	authorization.loginState = await authorization.storedLogin();
@@ -95,7 +94,6 @@ window.onload = async () => {
 			} else {
 				document.getElementById('btn-login').style.display = 'block';
 				document.getElementById('btn-logout').style.display = 'none';
-
 			}
 		},
 		// registerCallback parameter
