@@ -7,7 +7,9 @@ const apiUrl = "https://localhost:7777/api/";
 export default class {
 
     static loginState = { "loggedIn": false };
-
+    static async reloadLogin() {
+        this.loginState = await this.storedLogin();
+    }
     static saveCredentials(token, userid) { //setting localStorage to setItem
         localStorage.setItem("token", token);
         localStorage.setItem("userid", userid);

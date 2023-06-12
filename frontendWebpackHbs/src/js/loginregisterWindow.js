@@ -102,7 +102,10 @@ export default class {
                 me.hideLogin();
                 me.user = loginResultjson.user;
             }
+            if (!loginResultjson.loggedIn) {
+                alert("Login Failed. Please try it again!");
 
+            }
             me.loggedIn = loginResultjson.loggedIn;
 
             me.loginCallback(loginResultjson);

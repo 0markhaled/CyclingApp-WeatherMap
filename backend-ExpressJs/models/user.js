@@ -38,10 +38,10 @@ module.exports = {
 				// hash the password 
 				const passHash = (crypto.createHash('sha256')).update(password).digest('base64');
 
-				const result = await conn.query("insert into user (username, email, passHash, last, first, profile_image, emailHash) values (?,?,?,?,?,?,?)", [username, email, passHash, last, first, profile_image, emailHash]);
+				const result = await conn.query("insert into `user` (username, email, passHash, last, first, emailHash) values (?,?,?,?,?,?)", [username, email, passHash, last, first, emailHash]);
 				conn.end();
 
-				result.user = { username: username, email: email, user_id: Number(result.insertId), last: last, first: first, profile_image: profile_image, emailHash };
+				result.user = { username: username, email: email, user_id: Number(result.insertId), last: last, first: first, emailHash };
 				result.code = { code: emailHash, email: email };
 				return result;
 			} else {
@@ -139,6 +139,33 @@ module.exports = {
 			return result;
 		}
 		return { loggedIn: false };
-	}
+	},
 
+	'editInfo': async function (user, field, value) {
+		console.log('res', user, field, value);
+		if (user.loggedIn) {
+			field = field.toLowerCase();
+			const fields = ['first', 'last', 'username1', 'email1'];
+
+			if (fields.includes(field)) {
+				if (field === 'username1') {
+					field = 'username';
+				} else if (field === 'email1') {
+					field = 'email';
+				}
+				let conn = await db.getConnection();
+
+				const result = await conn.query(
+					"update `user` set `" + field + "` = ?  where user_id = ?",
+					[value, user.user.user_id]);
+
+				conn.end();
+
+				return result;
+			}
+
+			return { message: 'invalid field ' + field };
+		}
+		return { loggedIn: false };
+	}
 };

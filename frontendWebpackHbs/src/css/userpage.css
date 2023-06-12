@@ -7,6 +7,14 @@
     border-radius: 5px;
 }
 
+#userpage-logOut-content {
+    display: flex;
+    justify-content: center;
+    padding: 200px;
+    font-size: 32px;
+    font-style: italic;
+}
+
 #userpage-column {
     display: flex;
     flex-direction: column;
@@ -16,7 +24,7 @@
 }
 
 #userpage-userthumb {
-    width: 90%;
+    width: 100%;
     height: 150px;
     position: relative;
 }
@@ -51,12 +59,96 @@
     border: black 2px solid;
 }
 
+p {
+    margin-left: 10px;
+    position: relative;
+}
+
 #user-route {
     text-align: center;
     vertical-align: middle;
 }
 
+#userpageSettings-container {
+    margin-left: 10px;
+    position: relative;
+}
+
+#usersetting-profile {
+    display: flex;
+    flex-flow: column wrap;
+
+    position: relative;
+}
+
+#usersetting-profile-container {
+    background-image: url("../img/usersetting.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: 98%;
+
+}
+
 #userpageSettings-profileimage {
-    width: 250px;
-    height: 250px;
+    width: 100px;
+    height: auto;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+
+}
+
+input {
+    width: 400px;
+}
+
+.user-settingpage,
+.user-settingpage-data {
+    font-style: italic;
+}
+
+.user-settingpage-data {
+    font-size: 14px;
+}
+
+.new {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.user-edit,
+#btn-user-edit {
+    margin-top: 10px;
+    width: 50px;
+    background-color: #FFDE59;
+    border-radius: 3px 3px;
+    box-shadow: 3px 3px rgb(82, 79, 79);
+}
+
+#btn-userfirst-edit:hover,
+#btn-userlast-edit:hover,
+#btn-username-edit:hover,
+#btn-useremail-edit:hover,
+#btn-user-edit:hover {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+#btn-user-edit {
+    position: relative;
+    margin-left: 0px;
+}
+
+#profile-image {
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 10px;
+}
+
+#photo {
+    margin-top: 10px;
 }

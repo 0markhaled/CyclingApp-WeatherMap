@@ -47,6 +47,7 @@ let mainEl = document.getElementById("root-main");
 let map;
 
 window.onload = async () => {
+
 	let weatherData = await fetch(rootUrl + "weather");
 
 	let weatherDatajson = await weatherData.json();
@@ -66,6 +67,8 @@ window.onload = async () => {
 		// maybe add something here to make it a cleaner transition
 		mainEl.innerHTML = templateLanding();
 		alert("You have logged out!")
+		document.getElementById('btn-login').style.display = 'block';
+		document.getElementById('btn-logout').style.display = 'none';
 	});
 
 	authorization.loginState = await authorization.storedLogin();
@@ -83,11 +86,17 @@ window.onload = async () => {
 		"registersubmit",
 		(result) => {
 			authorization.loginState = result;
-
 			if (result.loggedIn) {
 				mainEl.innerHTML = templateUserpage(authorization.loginState);
 				authorization.saveCredentials(result.cookie, result.user.user_id);
 				userpageNav.userpageNav({ userinfo: authorization.loginState });
+				document.getElementById('btn-login').style.display = 'none';
+				document.getElementById('btn-logout').style.display = 'block';
+
+			} else {
+				document.getElementById('btn-login').style.display = 'block';
+				document.getElementById('btn-logout').style.display = 'none';
+
 			}
 		},
 		// registerCallback parameter
@@ -96,12 +105,26 @@ window.onload = async () => {
 			if (result.username != undefined) { // user successfully registered
 				// loginModule.hideLogin();
 			} else {
-				console.log("Not Registered or user exists already");
+				if (result.message != undefined) {
+					alert(result.message);
+				} else {
+					alert('Could not register');
+				}
 			}
 		});
 
 	loginModule.init();
 
+	// Hide or show login/logout buttons based on login state
+	if (await authorization.validate()) {
+		loginModule.hideLogin(false);
+		document.getElementById('btn-login').style.display = 'none';
+		document.getElementById('btn-logout').style.display = 'block';
+		alert("user validated");
+	} else {
+		document.getElementById('btn-login').style.display = 'block';
+		document.getElementById('btn-logout').style.display = 'none';
+	}
 
 	// alert for when the user is validated
 	if (await authorization.validate()) {
@@ -110,46 +133,49 @@ window.onload = async () => {
 	}
 
 	for (let elLink of elsNavLink) {
-
 		elLink.addEventListener('click', function () {
 			let page = { name: this.dataset.link };
 
-			// if Home is clicked on it shows the home page and fetches the stuff from the json file
-			if (page.name === "Home") {
-				mainEl.innerHTML = templateLanding();
-			}
+			switch (page.name) {
+				case "Home":
+					mainEl.innerHTML = templateLanding();
+					break;
 
-			if (page.name === "Map") {
-				mainEl.innerHTML = templateMap({});
-				jsLocation((position) => {
-					//console.log(position);
-					map = new mapTool("map", position);
-					// map.drawCycleRoutes();
+				case "Map":
+					mainEl.innerHTML = templateMap({});
+					jsLocation((position) => {
+						//console.log(position);
+						map = new mapTool("map", position);
+						// map.drawCycleRoutes();
+					});
+					break;
 
+				case "Info":
+					mainEl.innerHTML = templateInfo();
+					toggle();
+					// scrollBackground();
+					break;
 
-				});
-			}
+				case "Weather":
+					// mainEl.innerHTML = templateWeather();
+					break;
 
-			if (page.name === "Info") {
-				mainEl.innerHTML = templateInfo();
-				toggle();
-				// scrollBackground();
-			}
+				case "User Page":
+					if (authorization.loginState.loggedIn) {
+						mainEl.innerHTML = templateUserpage(authorization.loginState);
+						userpageNav.userpageNav({ userinfo: authorization.loginState }); // can add more data here adding another key if wanted
+					} else {
+						mainEl.innerHTML = '<div id="userpage-logOut-content">Please login to see your profile!</div>';
+					}
+					break;
 
-			if (page.name === "Weather") {
-				//	mainEl.innerHTML = templateWeather();
-			}
-
-			if (page.name === "User Page") {
-				mainEl.innerHTML = templateUserpage(authorization.loginState);
-				userpageNav.userpageNav({ userinfo: authorization.loginState }); // can add more data here adding another key if wanted
-			}
-
-			else if (page.name === "Contact Us") {
-				mainEl.innerHTML = templateContact();
+				case "Contact Us":
+					mainEl.innerHTML = templateContact();
+					break;
 			}
 		});
 	}
+
 };
 
 // Person handling weather can use this later

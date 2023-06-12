@@ -73,20 +73,23 @@
     height: 30px;
     padding: 10px;
     border-radius: 20px;
-    background-color: aquamarine;
-    box-shadow: 6px 6px #888888;
+    border-color: #FFDE59;
+    background-color: #FFDE59;
+    box-shadow: 3px 3px #5a5858;
     position: relative;
 }
 
 .info-togglebtn:active {
-    background-color: blue;
+    background-color: green;
     color: white;
     box-shadow: none;
 }
 
 .info-togglebtn:hover {
-    background-color: blue;
+    background-color: green;
+    border-color: green;
     color: white;
+    box-shadow: none;
 }
 
 .info-expandable {
@@ -94,15 +97,16 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     display: none;
-    border: 5px;
+    border: 2px;
     border-style: solid;
     border-radius: 10px;
-    border-color: blueviolet;
+    border-color: green;
     /* transition: 200ms height ease-in; */
 }
 
 .info-wrapper.open .info-expandable {
     display: flex;
+    flex-direction: column;
     width: 170px;
     height: auto;
     background-color: rgba(255, 255, 255, 0.719);

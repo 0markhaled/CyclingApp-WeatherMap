@@ -3,6 +3,9 @@ import userpageSavedtemplate from '../hbs/userpage/userpageSaved.hbs';
 import userpageLogtemplate from '../hbs/userpage/userpageLog.hbs';
 import userpageCollectionstemplate from '../hbs/userpage/userpageCollections.hbs';
 import userpageSettingstemplate from '../hbs/userpage/userpageSettings.hbs';
+import { set } from 'date-fns';
+import authorization from './authorization';
+import templateUserpage from '../hbs/userpage/userpage.hbs';
 
 export default class {
 
@@ -30,19 +33,48 @@ export default class {
             userpageContainer.innerHTML = userpageCollectionstemplate(data);
         });
 
+        let mainEl = document.getElementById("root-main");
+        let reloadUserpage = async () => {
+            await authorization.reloadLogin();
+            mainEl.innerHTML = templateUserpage(authorization.loginState);
+            this.userpageNav({ userinfo: authorization.loginState });
+        };
         userpageSettings.addEventListener("click", function () {
             userpageContainer.innerHTML = userpageSettingstemplate(data);
-            let btnUseredit = document.getElementById('btn-user-upload');
+            let btnUserEdit = document.getElementById('btn-user-edit');
             let photoFileEl = document.getElementById('photo');
-            btnUseredit.addEventListener('click', async () => {
+            let editButtonEls = document.getElementsByClassName('user-edit');
+            for (let el of editButtonEls) {
+                el.addEventListener('click', async () => {
+                    const field = el.dataset.field
+                    const val = document.getElementById(field).value;
+                    console.log('field,val', field, val);
+                    const requestData = {
+                        'value': val
+                    }
+                    let uid = localStorage.getItem('userid');
+                    let ch = localStorage.getItem('token');
+
+                    let result = await fetch(`api/user/edit/${field}?uid=${uid}&ch=${ch}`, {
+                        'method': 'POST',
+                        'body': JSON.stringify(requestData),
+                        'headers': {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    await reloadUserpage();
+                });
+            }
+
+
+            btnUserEdit.addEventListener('click', async () => {
                 const photoFile = photoFileEl.files[0];
                 console.log(photoFile, photoFileEl);
                 const formData = new FormData();
                 formData.append('photo', photoFile);
-
                 let uid = localStorage.getItem('userid');
                 let ch = localStorage.getItem('token');
-                let result = await fetch(`api/user/edit?uid=${uid}&ch=${ch}`, {
+                let result = await fetch(`api/user/edit/photo?uid=${uid}&ch=${ch}`, {
                     'method': 'POST',
                     'body': formData
                 });
@@ -53,6 +85,7 @@ export default class {
                         profileimage.src = '';
                         let profileimage2 = document.getElementById('userpageSettings-profileimage');
                         profileimage2.src = '';
+                        await reloadUserpage();
                     } else {
                         alert('Error uploading:\n' + resultJson.message);
                     }
@@ -62,6 +95,7 @@ export default class {
                     profileimage.src = '/img/' + resultJson.filename;
                     let profileimage2 = document.getElementById('userpageSettings-profileimage');
                     profileimage2.src = '/img/' + resultJson.filename;
+                    await reloadUserpage();
                 }
             });
         });
