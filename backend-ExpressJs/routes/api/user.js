@@ -4,7 +4,7 @@ const user = require('../../models/user');
 const cors = require('cors');
 const nodeMailer = require('nodemailer');
 const fileUpload = require('express-fileupload');
-
+const validator = require("email-validator");
 
 router.use(fileUpload());
 
@@ -28,38 +28,42 @@ router.get('/', async function (req, res, next) {
 //  we can request adding a user by sending username, email, password in the body of the request
 // return the username, email, user_id if successful
 router.post('/register', async function (req, res, next) {
-
 	if (req.login.loggedIn) {
 		res.json({ "message": "Already Loggedin" });
 
 	} else {
 		console.log(req.body);
-		// whats profile_image?
-		let re = await user.addUser(req.body.userUsername, req.body.userEmail, req.body.registerPassword, req.body.userLast, req.body.userFirst);
+		if (validator.validate(req.body.userEmail)) {
+			let re = await user.addUser(req.body.userUsername, req.body.userEmail, req.body.registerPassword, req.body.userLast, req.body.userFirst);
 
-		if (re && re.affectedRows == 1) {
-			// console.log(re.code);
-			// we send an email when a new user registered
-			const emailer = nodeMailer.createTransport({
-				service: 'gmail',
-				auth: {
-					user: 'weijacky1978@gmail.com',
-					pass: 'myhhrrycamjzvysv'
-				}
-			});
+			if (re && re.affectedRows == 1) {
+				// console.log(re.code);
+				// we send an email when a new user registered
 
-			const result = await emailer.sendMail({
-				from: 'weijacky1978@gmail.com',
-				to: re.code.email,
-				subject: 'Hello New User ' + re.user.username,
-				text: 'Welcome! ' + re.user.username + '.\r\n Please click on this url https://localhost:7777/?code=' + re.code.code + '&uid=' + re.user.user_id + ' to confirm your registration!'
-			});
+				const emailer = nodeMailer.createTransport({
+					service: 'gmail',
+					auth: {
+						user: 'weijacky1978@gmail.com',
+						pass: 'myhhrrycamjzvysv'
+					}
+				});
 
-			res.json(re.user);
+				const result = await emailer.sendMail({
+					from: 'weijacky1978@gmail.com',
+					to: re.code.email,
+					subject: 'Hello New User ' + re.user.username,
+					text: 'Welcome! ' + re.user.username + '.\r\n Please click on this url https://localhost:7777/?code=' + re.code.code + '&uid=' + re.user.user_id + ' to confirm your registration!'
+				});
+
+				res.json(re.user);
+			} else {
+				res.json({ "message": "Could not register" });
+			}
 		} else {
-			res.json({ "message": "Could not register" });
+			res.json({ "message": "You must enter a valid email address!" });
 		}
 	}
+
 });
 
 

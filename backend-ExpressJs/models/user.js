@@ -38,10 +38,10 @@ module.exports = {
 				// hash the password 
 				const passHash = (crypto.createHash('sha256')).update(password).digest('base64');
 
-				const result = await conn.query("insert into user (username, email, passHash, last, first, profile_image, emailHash) values (?,?,?,?,?,?,?)", [username, email, passHash, last, first, profile_image, emailHash]);
+				const result = await conn.query("insert into `user` (username, email, passHash, last, first, emailHash) values (?,?,?,?,?,?)", [username, email, passHash, last, first, emailHash]);
 				conn.end();
 
-				result.user = { username: username, email: email, user_id: Number(result.insertId), last: last, first: first, profile_image: profile_image, emailHash };
+				result.user = { username: username, email: email, user_id: Number(result.insertId), last: last, first: first, emailHash };
 				result.code = { code: emailHash, email: email };
 				return result;
 			} else {
