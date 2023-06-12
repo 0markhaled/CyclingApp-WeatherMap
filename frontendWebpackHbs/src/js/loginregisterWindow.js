@@ -103,7 +103,7 @@ export default class {
                 me.user = loginResultjson.user;
             }
             if (!loginResultjson.loggedIn) {
-                alert("Wrong username or password input，please try it again!");
+                alert("Login Failed. Please try it again!");
 
             }
             me.loggedIn = loginResultjson.loggedIn;
