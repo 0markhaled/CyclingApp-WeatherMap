@@ -6,6 +6,7 @@ module.exports = async (req, res, next) => {
 	let password = null;
 	//http body
 	// ex:{"user": {"uid":uid, "ch":ch}}
+	// console.log("post", req.body);
 	if (req.body.user != undefined) {
 		if (req.body.user.username != undefined) {
 			username = req.body.user.username;
@@ -44,14 +45,14 @@ module.exports = async (req, res, next) => {
 
 		//http body
 		// ex:{"user": {"uid":uid, "ch":ch}}
-		if (req.body.user != undefined) {
-			if (req.body.user.uid != undefined) {
-				uid = req.body.user.uid;
-			}
-			if (req.body.user.ch != undefined) {
-				ch = req.body.user.ch;
-			}
+
+		if (req.body.uid != undefined) {
+			uid = req.body.uid;
 		}
+		if (req.body.ch != undefined) {
+			ch = req.body.ch;
+		}
+
 
 		//query string
 		// ex: /?uid=uid&ch=ch

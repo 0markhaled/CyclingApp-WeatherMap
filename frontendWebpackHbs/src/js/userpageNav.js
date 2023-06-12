@@ -32,6 +32,38 @@ export default class {
 
         userpageSettings.addEventListener("click", function () {
             userpageContainer.innerHTML = userpageSettingstemplate(data);
+            let btnUseredit = document.getElementById('btn-user-upload');
+            let photoFileEl = document.getElementById('photo');
+            btnUseredit.addEventListener('click', async () => {
+                const photoFile = photoFileEl.files[0];
+                console.log(photoFile, photoFileEl);
+                const formData = new FormData();
+                formData.append('photo', photoFile);
+
+                let uid = localStorage.getItem('userid');
+                let ch = localStorage.getItem('token');
+                let result = await fetch(`api/user/edit?uid=${uid}&ch=${ch}`, {
+                    'method': 'POST',
+                    'body': formData
+                });
+                let resultJson = await result.json();
+                if (!resultJson.success) {
+                    if (resultJson.deleted) {
+                        let profileimage = document.getElementById('userpage-userthumb');
+                        profileimage.src = '';
+                        let profileimage2 = document.getElementById('userpageSettings-profileimage');
+                        profileimage2.src = '';
+                    } else {
+                        alert('Error uploading:\n' + resultJson.message);
+                    }
+                }
+                else {
+                    let profileimage = document.getElementById('userpage-userthumb');
+                    profileimage.src = '/img/' + resultJson.filename;
+                    let profileimage2 = document.getElementById('userpageSettings-profileimage');
+                    profileimage2.src = '/img/' + resultJson.filename;
+                }
+            });
         });
     }
 }

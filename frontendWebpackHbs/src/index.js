@@ -126,6 +126,7 @@ window.onload = async () => {
 					map = new mapTool("map", position);
 					// map.drawCycleRoutes();
 
+
 				});
 			}
 

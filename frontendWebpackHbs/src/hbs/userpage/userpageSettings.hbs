@@ -2,3 +2,21 @@
     <p>Welcome, {{userinfo.user.first}}</p>
 
 </div>
+
+<div>
+    <img id="userpageSettings-profileimage" src="/img/{{userinfo.user.profile_image}}">
+    <p>User Information:</p>
+    <p>First name: {{userinfo.user.first}}</p>
+    <p>Last name: {{userinfo.user.last}}</p>
+    <p>Username: {{userinfo.user.username}}</p>
+    <p>Email: {{userinfo.user.email}}</p>
+</div>
+
+<div>
+    <form>
+        <label for="choose-photo">Choose a Profile Image:</label>
+        <input type="file" name="choose-photo" id="photo">
+    </form>
+    <label for="upload-delete-photo">Upload or delete Profile Image:</label>
+    <button id="btn-user-upload" name="upload-delete-photo">Upload or delete</button>
+</div>

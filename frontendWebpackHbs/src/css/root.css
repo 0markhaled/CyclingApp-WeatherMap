@@ -17,7 +17,7 @@
 
 #logo-img {
     border-radius: 5px;
-    height: 148px;
+    height: 166px;
 }
 
 #top-root-nav {
@@ -35,14 +35,15 @@
     padding-bottom: 0px;
     border-radius: 5px;
     border: 2px solid #21502C;
-    transition: 0.5s;
+    background-color: #FFDE59;
+    transition: 1s;
     margin: 8px;
 }
 
 .navigation-li:hover {
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.474);
-    color: black;
+    background-color: #21502C;
+    color: white;
 }
 
 #bottom-nav-bar {
@@ -70,12 +71,12 @@
     background-color: #FFDE59;
     color: #21502C;
     padding: 8px;
-    transition: 0.5s;
+    transition: 1s;
 }
 
 #btn-login:hover {
-    background-color: rgba(255, 255, 255, 0.474);
-    color: black;
+    background-color: #21502C;
+    color: white;
     cursor: pointer;
 }
 
@@ -86,30 +87,26 @@
     color: #21502C;
     margin-top: 8px;
     padding: 8px;
-    transition: 0.5s;
+    transition: 1s;
 }
 
 #btn-logout:hover {
-    background-color: rgba(255, 255, 255, 0.474);
-    color: black;
+    background-color: #21502C;
+    color: white;
     cursor: pointer;
-}
-
-#btn-login:hover {
-    background-color: rgba(255, 255, 255, 0.474);
-    color: black;
 }
 
 /* Login / Register form */
 #login-dialog {
-    background-color: bisque;
-    border: 2px solid black;
+    border: 2px solid #21502C;
+    border-radius: 5px;
     width: 70%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 8px;
+    background-color: #bf362a;
 }
 
 #login-wrapper {
@@ -124,10 +121,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 2px solid black;
+    border: 2px solid #21502C;
     width: 40%;
     height: 100%;
     margin-right: 8px;
+    background-color: #ffde59;
+    border-radius: 5px;
 }
 
 #register-form {
@@ -135,10 +134,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 2px solid black;
+    border: 2px solid #21502C;
+    border-radius: 5px;
     width: 40%;
     height: 100%;
     margin-left: 8px;
+    background-color: #FFDE59;
 }
 
 .userform {
@@ -147,6 +148,7 @@
     align-items: center;
     justify-content: center;
     margin: 8px;
+    border-radius: 5px;
 }
 
 /* Make this 100% of the screenview */
@@ -155,13 +157,39 @@
     position: absolute;
     display: none;
     top: 0;
-    height: 99%;
+    height: 100vh;
     width: 99%;
     padding: 0;
     margin: 0px;
-    border: 2px solid black;
-    background-color: rgb(255, 228, 196);
+    border: 2px solid #21502C;
+    background-color: #21502ca6;
     z-index: 1;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+}
+
+#loginsubmit {
+    margin: 8px;
+    transition: 2s;
+}
+
+#loginsubmit:hover {
+    cursor: pointer;
+    background-color: #21502C;
+    color: white;
+    border-radius: 2px;
+}
+
+#registersubmit {
+    margin: 8px;
+    transition: 2s;
+}
+
+#registersubmit:hover {
+    cursor: pointer;
+    background-color: #21502C;
+    color: white;
+    border-radius: 2px;
 }
 
 #exitlogin {

@@ -1,49 +1,49 @@
 #userpage-master-container {
-    border: 2px solid black;
+    border: 2px solid #21502C;
     height: 700px;
     display: flex;
     flex-direction: row;
+    margin-top: 8px;
+    border-radius: 5px;
 }
 
 #userpage-column {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 10%;
-    border: black 2px solid;
     background-color: rgba(255, 255, 255, 0.712);
-    border-radius: 5px;
 }
 
 #userpage-userthumb {
-    border: black 2px solid;
-    width: 100%;
-    height: 200px;
+    width: 90%;
+    height: 150px;
     position: relative;
 }
 
 #userpage-column>button {
-    border: black 2px solid;
-    width: 100%;
+    border: #21502C 2px solid;
+    width: 95%;
     height: 50px;
     margin-top: 5px;
-    background-color: rgba(255, 255, 255, 0.712);
+    background-color: #FFDE59;
     border-radius: 5px;
-    box-shadow: 5px 5px rgb(110, 109, 109);
+    box-shadow: 2px 2px rgb(110, 109, 109);
+    transition: 1s;
 }
 
 #userpage-column>button:hover {
     cursor: pointer;
-    background-color: grey;
+    background-color: #21502C;
     color: white;
-    box-shadow: none;
+    box-shadow: 2px 2px rgb(110, 109, 109);
 }
 
 #userpage-info {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    border: black 2px solid;
-    border-radius: 5px;
+    width: 100%;
+    border-left: #21502C 2px solid;
     background-color: rgba(255, 255, 255, 0.712);
 }
 
@@ -54,4 +54,9 @@
 #user-route {
     text-align: center;
     vertical-align: middle;
+}
+
+#userpageSettings-profileimage {
+    width: 250px;
+    height: 250px;
 }

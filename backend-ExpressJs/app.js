@@ -2,10 +2,11 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+
 const logger = require('morgan');
 const db = require("./modules/db");
 const auth = require("./modules/auth");
-const cycleRoute = require('./routes/cycleRoute'); //omar
+const cycleRoute = require('./routes/api/cycleRoute'); //omar
 
 
 
@@ -48,7 +49,7 @@ app.use(auth);
 app.use('/api/user', userApiRouter);
 
 app.use('/', indexRouter);
-app.use('/cycleRoutes', cycleRoute);//Omar
+app.use('/api/routes', cycleRoute);//Omar
 
 
 app.use('/geo', geoRouter);
@@ -76,4 +77,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-
