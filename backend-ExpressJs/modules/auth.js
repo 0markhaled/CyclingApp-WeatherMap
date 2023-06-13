@@ -64,6 +64,7 @@ module.exports = async (req, res, next) => {
 		}
 
 		if (ch != null && uid != null) {
+			//console.log(uid, ch);
 			let auth = await user.cookieLogin(uid, ch);
 			req.login = auth;
 		}

@@ -114,7 +114,7 @@ export default class {
                 points: route,
             }
         };
-        console.log(payload);
+        //console.log(payload);
         let result = await fetch(`api/routes/?uid=${uid}&ch=${ch}`, {
             'method': 'POST',
             'body': JSON.stringify(payload),
@@ -124,20 +124,7 @@ export default class {
             }
 
         });
-        console.log(result.message);
-
-
-
-        // if (this.selectedRoute) {
-        //     let savedRoute = {
-        //         //selected route is (e) from the function above
-        //         waypoints: selectedRoute.route.waypoints,
-        //         distance: selectedRoute.route.summary.totalDistance,
-        //         duration: selectedRoute.route.summary.totalTime,
-        //         name: document.getElementById('mappage-routename-area').value
-        //     }
-        //     this.savedRoutes.push(savedRoute); //adds the object to the array
-        // }
+        // console.log(result.message);
     };
 
 
@@ -158,7 +145,6 @@ export default class {
         });
 
 
-
-
     }
+
 }

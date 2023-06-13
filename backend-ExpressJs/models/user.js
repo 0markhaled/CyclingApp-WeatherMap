@@ -1,3 +1,4 @@
+const { user } = require("../config/dbConfig");
 const db = require("../modules/db");
 const crypto = require('crypto');
 
@@ -22,7 +23,7 @@ module.exports = {
 		return { 'validated': false };
 	},
 	'addUser': async function (username, email, password, last, first, profile_image) {
-		console.log(username, email, password, last, first);
+		//console.log(username, email, password, last, first);
 		if (username != null && email != null && password != null) {
 			if (!await this.isUser(username)) {
 				let conn = await db.getConnection();
@@ -67,6 +68,7 @@ module.exports = {
 			[user_id, cookieHash]);
 
 		conn.end();
+		//console.log(user_id, cookieHash, result);
 		if (result.length > 0) {
 			const ret = {
 				user: result[0],

@@ -31,8 +31,9 @@ router.post('/', async function (req, res, next) {
 });
 
 router.get('/', async function (req, res, next) {
-
+   // console.log(req.login);
     if (req.login.loggedIn) {
+
         const user_id = req.login.user.user_id;
         const result = await routeModel.fetchRoutes(user_id);
         res.json(result);

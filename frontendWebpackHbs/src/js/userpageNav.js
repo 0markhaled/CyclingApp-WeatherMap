@@ -6,6 +6,7 @@ import userpageSettingstemplate from '../hbs/userpage/userpageSettings.hbs';
 import { set } from 'date-fns';
 import authorization from './authorization';
 import templateUserpage from '../hbs/userpage/userpage.hbs';
+import routeUtility from './routeData.js';
 
 export default class {
 
@@ -21,8 +22,11 @@ export default class {
             userpageContainer.innerHTML = userDashboardtemplate(data);
         });
 
-        userSaved.addEventListener("click", function () {
+        userSaved.addEventListener("click", async function () {
+            data.routes = await routeUtility.getRoutes();
             userpageContainer.innerHTML = userpageSavedtemplate(data);
+            console.log(data.routes);
+
         });
 
         userpageLog.addEventListener("click", function () {
