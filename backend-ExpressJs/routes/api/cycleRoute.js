@@ -12,7 +12,10 @@ router.use(cors());
 
 
 router.post('/', async function (req, res, next) {
+    //console.log(req.login);
+
     if (req.login.loggedIn) {
+
 
         const user_id = req.login.user.user_id;
         const data = req.body.route;

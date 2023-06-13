@@ -96,14 +96,25 @@ export default class {
         this.routeName = document.getElementById('mappage-routename-area').value;
         const uid = localStorage.getItem('userid');
         const ch = localStorage.getItem('token');
+        var time = this.routeTime;
+
+        var hours = Math.floor(time / 3600);
+        var minutes = Math.floor((time % 3600) / 60);
+        var seconds = Math.floor(time % 60);
+
+
+        var formattedTime = hours.toString().padStart(2, '0') + ':' +
+            minutes.toString().padStart(2, '0') + ':' +
+            seconds.toString().padStart(2, '0');
         const payload = {
             route: {
                 name: this.routeName,
                 distance: this.routeDistance,
-                time: this.routeTime,
+                time: formattedTime,
                 points: route,
             }
         };
+        console.log(payload);
         let result = await fetch(`api/routes/?uid=${uid}&ch=${ch}`, {
             'method': 'POST',
             'body': JSON.stringify(payload),
