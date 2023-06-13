@@ -14,16 +14,23 @@ module.exports = {
         return { message: 'route saved' };
     },
 
-    'fetchRoute': async function (user_id) {
+    'fetchRoutes': async function (user_id) {
         let conn = await db.getConnection();
         const result = await conn.query("SELECT (name, distance, duration, route_points) FROM route WHERE user_id = ?", [user_id]);
         conn.end();
         return result;
     },
 
-    'clearRoute': async function (user_id) {
+    'clearRoutes': async function (user_id) {
         let conn = await db.getConnection();
         const result = await conn.query("DELETE FROM * route WHERE user_id = ?", [user_id]);
+        conn.end();
+        return result;
+    },
+
+    'deleteRoute': async function (user_id, route_id) {
+        let conn = await db.getConnection();
+        const result = await conn.query("DELETE FROM route WHERE user_id = ? AND route_id = ?", [user_id, route_id]);
         conn.end();
         return result;
     }
