@@ -1,6 +1,6 @@
 #userpage-master-container {
     border: 2px solid #21502C;
-    height: 700px;
+    height: 800px;
     display: flex;
     flex-direction: row;
     margin-top: 8px;
@@ -56,7 +56,7 @@
 }
 
 #user-banner {
-    border: black 2px solid;
+    border-bottom: green 2px solid;
 }
 
 p {
@@ -77,16 +77,14 @@ p {
 #usersetting-profile {
     display: flex;
     flex-flow: column wrap;
-
     position: relative;
 }
 
 #usersetting-profile-container {
     background-image: url("../img/usersetting.jpg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 750px;
     background-position-x: 98%;
-
 }
 
 #userpageSettings-profileimage {
