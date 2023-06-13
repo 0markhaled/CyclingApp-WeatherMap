@@ -4,6 +4,7 @@
     flex-direction: column;
     height: auto;
     width: 100%;
+    height: 600px;
     margin-bottom: 30px;
     margin-left: 1px;
     left: 0;
@@ -72,11 +73,12 @@
     width: 180px;
     height: 30px;
     padding: 10px;
-    border-radius: 20px;
-    border-color: #FFDE59;
+    border-radius: 5px;
+    border-color: green;
     background-color: #FFDE59;
     box-shadow: 3px 3px #5a5858;
     position: relative;
+    transition: 1s;
 }
 
 .info-togglebtn:active {
@@ -99,7 +101,7 @@
     display: none;
     border: 2px;
     border-style: solid;
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: green;
     /* transition: 200ms height ease-in; */
 }
