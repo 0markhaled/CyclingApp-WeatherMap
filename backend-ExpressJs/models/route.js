@@ -1,7 +1,6 @@
 const db = require("../modules/db");
 const user = require("./user");
 
-
 module.exports = {
 
     'saveRoute': async function (name, distance, duration, points, user_id) {
@@ -27,9 +26,4 @@ module.exports = {
         conn.end();
         return result;
     }
-
-
-
-
-
 }

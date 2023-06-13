@@ -8,9 +8,6 @@ const routeModel = require('../../models/route');
 router.use(cors());
 /* GET home page. */
 
-
-
-
 router.post('/', async function (req, res, next) {
     //console.log(req.login);
 
@@ -29,9 +26,6 @@ router.post('/', async function (req, res, next) {
     }
 
 });
-
-
-
 
 // router.get('/', async function (req, res, next) {
 
