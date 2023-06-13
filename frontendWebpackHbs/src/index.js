@@ -105,7 +105,11 @@ window.onload = async () => {
 			if (result.username != undefined) { // user successfully registered
 				// loginModule.hideLogin();
 			} else {
-				console.log("Not Registered or user exists already");
+				if (result.message != undefined) {
+					alert(result.message);
+				} else {
+					alert('Could not register');
+				}
 			}
 		});
 
